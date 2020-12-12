@@ -1,6 +1,6 @@
 const constants = {
     tabs: {
-        test: 'test'
+        phases: 'Phases'
     }
 }
 
