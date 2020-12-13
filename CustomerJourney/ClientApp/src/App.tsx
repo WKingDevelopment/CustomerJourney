@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { ConfigurationPage } from './components/pages/ConfigurationPage';
 
-import './custom.css'
+import './styling/test.scss'
 
 export default class App extends Component {
   static displayName = App.name;
