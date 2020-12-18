@@ -1,3 +1,4 @@
+using CustomerJourney.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,7 +23,7 @@ namespace CustomerJourney
         {
 
             services.AddControllersWithViews();
-
+            services.AddDbContext<ClientJourneyContext>();
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
