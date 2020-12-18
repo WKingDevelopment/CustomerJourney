@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CustomerJourney.Models;
 using CustomerJourney.ModelsDBO;
+using CustomerJourney.Models_Client;
 
 namespace CustomerJourney.Controllers
 {
@@ -21,16 +22,10 @@ namespace CustomerJourney.Controllers
             _context = context;
         }
 
-        // GET: api/PhasesDBOes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<PhasesDBO>>> GetConfigPhases()
-        {
-            return await _context.ConfigPhases.ToListAsync();
-        }
 
         // GET: api/PhasesDBOes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PhasesDBO>> GetPhasesDBO(int id)
+        public async Task<ActionResult<Phases>> GetPhasesDBO(int id)
         {
             var phasesDBO = await _context.ConfigPhases.FindAsync(id);
 
@@ -39,20 +34,21 @@ namespace CustomerJourney.Controllers
                 return NotFound();
             }
 
-            return phasesDBO;
+            return phasesDBO.ConvertToClientObj();
         }
 
         // PUT: api/PhasesDBOes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPhasesDBO(int id, PhasesDBO phasesDBO)
+        public async Task<IActionResult> PutPhasesDBO(int id, Phases phases)
         {
-            if (id != phasesDBO.CompanyId)
+            if (id != phases.companyId)
             {
                 return BadRequest();
             }
 
+            PhasesDBO phasesDBO = new PhasesDBO(phases);
             _context.Entry(phasesDBO).State = EntityState.Modified;
 
             try
