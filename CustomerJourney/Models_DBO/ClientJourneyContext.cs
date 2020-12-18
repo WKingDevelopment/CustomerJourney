@@ -1,4 +1,5 @@
 ﻿using System;
+using CustomerJourney.ModelsDBO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -17,7 +18,7 @@ namespace CustomerJourney.Models
         {
         }
 
-        public virtual DbSet<ConfigPhase> ConfigPhases { get; set; }
+        public virtual DbSet<PhasesDBO> ConfigPhases { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,7 +33,7 @@ namespace CustomerJourney.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<ConfigPhase>(entity =>
+            modelBuilder.Entity<PhasesDBO>(entity =>
             {
                 entity.HasKey(e => e.CompanyId)
                     .HasName("PK__Config_P__2D971C4C528769AD");
