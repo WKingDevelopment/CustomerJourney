@@ -1,4 +1,4 @@
-import { isEmptyOrSpace } from "../general_Functions/validation/validations_Functions";
+import { isEmptyOrSpace } from "../general_Functions/validations_Functions";
 
 class Email {
     constructor (public email:string = '') { }

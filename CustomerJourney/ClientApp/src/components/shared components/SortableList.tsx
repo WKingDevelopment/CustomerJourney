@@ -1,6 +1,6 @@
 import React from 'react';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
-import { removeFromArrayByIndex } from '../../general_Functions/arrayFunctions';
+import { removeFromArrayByIndex } from '../../general_Functions/array_Functions';
 
 const SortableList = React.memo(SortableContainer((props:ISortableListProps) => {
     let key: number = -1

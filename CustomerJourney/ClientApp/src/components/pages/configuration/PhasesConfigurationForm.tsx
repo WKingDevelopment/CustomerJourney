@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { arrayMove } from 'react-sortable-hoc';
 import { disabledPhases, Phases } from '../../../data classes/Phases';
-import { arrayComparer } from '../../../general_Functions/arrayFunctions';
+import { arrayComparer } from '../../../general_Functions/array_Functions';
 import { SortableList } from '../../shared components/SortableList';
 
 const PhasesConfigurationForm = () => {
