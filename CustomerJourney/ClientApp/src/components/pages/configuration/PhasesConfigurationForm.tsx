@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { arrayMove } from 'react-sortable-hoc';
-import { apiGetPhases } from '../../../apiCalls/phases';
+import { apiGetPhases, apiPutPhases } from '../../../apiCalls/phases';
 import { SessionContext } from '../../../contexts/session-context';
 import { disabledPhases, Phases } from '../../../data classes/Phases';
 import { arrayComparer } from '../../../general_Functions/array_Functions';
@@ -41,6 +41,16 @@ const PhasesConfigurationForm = () => {
     }
 };
 
+  const onSave = () => {
+    async function savePhases() {
+      const response = await apiPutPhases(phases,session.session)
+      if (response) {
+        setSavedPhases(phases);
+      }
+    }
+    savePhases()
+  }
+
   const addNewPhase = () => {
     setError('')
     const error = phases.checkNewPhase(newPhaseLabel);
@@ -59,7 +69,7 @@ const PhasesConfigurationForm = () => {
     return (
         <div>
           <h1>Phases</h1>
-          {<button disabled={buttonDisabled}>Save</button>}
+          {<button disabled={buttonDisabled} onClick={onSave}>Save</button>}
           <h2>Add Phase</h2>
           <div>{error}</div>
           <input

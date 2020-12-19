@@ -46,7 +46,7 @@ namespace CustomerJourney.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPhasesDBO(int id, Phases phases)
+        public async Task<ActionResult<bool>> PutPhases(int id, Phases phases)
         {
             if (id != phases.companyId)
             {
@@ -64,15 +64,15 @@ namespace CustomerJourney.Controllers
             {
                 if (!PhasesDBOExists(id))
                 {
-                    return NotFound();
+                    return false;
                 }
                 else
                 {
-                    throw;
+                    return false;
                 }
             }
 
-            return NoContent();
+            return true;
         }
 
         // POST: api/PhasesDBOes

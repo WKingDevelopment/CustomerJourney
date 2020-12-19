@@ -13,9 +13,10 @@ const postRequest = async (data:any, model:string, session:Session) => {
     return response.json();
   };
 
-const putRequest = async (data:any, model:string, session:Session, getReq:boolean = false, useId:boolean = false) => {
-  let url: string = getReq ? `${apiConstants.urls.urlbase}/api/${model}/Get` : `${apiConstants.urls.urlbase}/api/${model}}`;
+const putRequest = async (data:any, model:string, session:Session, useId:boolean, getReq:boolean) => {
+  let url: string = getReq ? `${apiConstants.urls.urlbase}/api/${model}/Get` : `${apiConstants.urls.urlbase}/api/${model}`;
   if (useId) {url = `${url}/${session.companyId.toString()}`};
+  console.log({...data,...session},url, useId)
   const response = await fetch(url, {
       method: apiConstants.methods.put,
       headers: {

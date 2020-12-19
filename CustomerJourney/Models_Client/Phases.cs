@@ -7,13 +7,13 @@ namespace CustomerJourney.Models_Client
 {
     public class Phases : Session
     {
-        public string[] phases { get; set; }
+        public string[] phaseList { get; set; }
 
         public Phases() { }
         public Phases(int _companyId, string[] _phases)
         {
             this.companyId = _companyId;
-            this.phases = _phases;
+            this.phaseList = _phases;
         }
     }
 }

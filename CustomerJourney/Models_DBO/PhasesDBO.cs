@@ -16,7 +16,7 @@ namespace CustomerJourney.ModelsDBO
         public PhasesDBO(Phases _phases)
         {
             this.CompanyId = _phases.companyId;
-            this.Phases = CheckConvertPhasesArray(_phases.phases);
+            this.Phases = CheckConvertPhasesArray(_phases.phaseList);
         }
         #endregion
 
