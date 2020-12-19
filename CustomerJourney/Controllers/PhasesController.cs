@@ -11,22 +11,27 @@ using CustomerJourney.Models_Client;
 
 namespace CustomerJourney.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Phases")]
     [ApiController]
-    public class PhasesDBOesController : ControllerBase
+    public class PhasesController : ControllerBase
     {
         private readonly ClientJourneyContext _context;
 
-        public PhasesDBOesController(ClientJourneyContext context)
+        public PhasesController(ClientJourneyContext context)
         {
             _context = context;
         }
 
 
-        // GET: api/PhasesDBOes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Phases>> GetPhasesDBO(int id)
+        // GET
+        [HttpPut("Get/{id}")]
+        public async Task<ActionResult<Phases>> GetPhases(int id, Session session)
         {
+            if (id != session.companyId)
+            {
+                return BadRequest();
+            }
+
             var phasesDBO = await _context.ConfigPhases.FindAsync(id);
 
             if (phasesDBO == null)

@@ -22,7 +22,7 @@ export class Phases {
         if (this.phaseList.includes(phase)) {
             return `Phase ${phase} already exists in list.`
         }
-        if (phase.includes('~')) {
+        if (phase.includes('*')) {
             return `Phase includes invalid character.`
         }
 

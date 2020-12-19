@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace CustomerJourney.Models_Client
 {
-    public class Phases
+    public class Phases : Session
     {
-        public int companyId { get; set; }
         public string[] phases { get; set; }
 
         public Phases() { }

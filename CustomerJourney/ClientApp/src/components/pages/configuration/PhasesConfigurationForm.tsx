@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { arrayMove } from 'react-sortable-hoc';
+import { apiGetPhases } from '../../../apiCalls/phases';
+import { SessionContext } from '../../../contexts/session-context';
 import { disabledPhases, Phases } from '../../../data classes/Phases';
 import { arrayComparer } from '../../../general_Functions/array_Functions';
 import { SortableList } from '../../shared components/SortableList';
@@ -9,16 +11,28 @@ const PhasesConfigurationForm = () => {
     const [error, setError] = useState<string>('');
     const [phases, setPhases] = useState<Phases>(new Phases(disabledPhases));
     const [buttonDisabled, setButtonDisabled] = useState<boolean>(true)
+    const { session, dispatch } = useContext(SessionContext)
+    const [savedPhases, setSavedPhases] = useState<Phases>(phases)
     
-    
-//   useEffect(() => {
-//     const same = arrayComparer(phases.phaseList,props.phases.phaseList)
-//     if (!same && buttonDisabled) {
-//       setButtonDisabled(false)
-//     } else if (same && !buttonDisabled) {
-//       setButtonDisabled(true)
-//     } 
-//   },[JSON.stringify(phases.phaseList)])
+    useEffect(() => {
+      async function getPhases() {
+        const response = await apiGetPhases(session.session)
+        if (response != undefined) { 
+          setPhases(response)
+          setSavedPhases(response)
+        }
+      }
+      getPhases()
+    }, [])
+
+  useEffect(() => {
+    const same = arrayComparer(savedPhases.phaseList,phases.phaseList)
+    if (!same && buttonDisabled) {
+      setButtonDisabled(false)
+    } else if (same && !buttonDisabled) {
+      setButtonDisabled(true)
+    } 
+  },[JSON.stringify(phases.phaseList),JSON.stringify(savedPhases.phaseList)])
 
   const onSortEnd = (props:ArrayMoveProps) => {
     if (props.oldIndex !== props.newIndex) {
