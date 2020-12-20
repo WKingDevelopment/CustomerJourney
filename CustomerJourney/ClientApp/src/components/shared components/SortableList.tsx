@@ -26,7 +26,7 @@ const SortableList = React.memo(SortableContainer((props:ISortableListProps) => 
     return (
     <div>
       {props.showRemove && <button onClick={() => {props.onRemove(props.id)}}>X</button>}
-    <li>{props.label}</li>
+    <p>{props.label}</p>
       </div>
     )});
 

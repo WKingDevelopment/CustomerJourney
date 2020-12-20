@@ -1,7 +1,11 @@
 $project-colour: DarkOrchid;
-$project-inputTxt: Indigo;
+$input-text: Indigo;
 $input-background: rgb(235, 235, 235);
+$freestanding-text: white;
 
 @import './base/base';
 @import './base/base-elements/buttons';
-@import './freestanding-text/error';
+@import './other/error';
+@import './base/base-elements/headers';
+@import './base/base-elements/paragraphs';
+@import './other/tabs';
