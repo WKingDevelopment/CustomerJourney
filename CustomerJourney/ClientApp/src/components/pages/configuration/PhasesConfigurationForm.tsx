@@ -34,10 +34,15 @@ const PhasesConfigurationForm = () => {
     } 
   },[JSON.stringify(phases.phaseList),JSON.stringify(savedPhases.phaseList)])
 
-  const onSortEnd = (props:ArrayMoveProps) => {
+    const onSortEnd = (props: ArrayMoveProps) => {
+      console.log('positions old new',props.oldIndex, props.newIndex)
     if (props.oldIndex !== props.newIndex) {
-      const newPhases = arrayMove(phases.phaseList,props.oldIndex,props.newIndex)
-      if (phases.postOrderChangeChecks(newPhases)) { setPhases(phases.setPhases(newPhases))}
+        const newPhases = arrayMove(phases.phaseList, props.oldIndex, props.newIndex)
+        console.log('Phase list.', newPhases)
+        if (phases.postOrderChangeChecks(newPhases)) {
+            console.log('Passed post order checks.')
+            setPhases(phases.setPhases(newPhases))
+        }
     }
 };
 
@@ -68,8 +73,8 @@ const PhasesConfigurationForm = () => {
 
     return (
         <div>
-          <h1>Phases</h1>
-          {<button disabled={buttonDisabled} onClick={onSave}>Save</button>}
+          <h1>Phase Configuration</h1>
+          {<button className="button_Basic" disabled={buttonDisabled} onClick={onSave}>Save</button>}
           <h2>Add Phase</h2>
           <div>{error}</div>
           <input
@@ -79,7 +84,7 @@ const PhasesConfigurationForm = () => {
             onChange={(e) => setNewPhaseLabel(e.target.value)}
           />
           <button onClick={addNewPhase}>Add Phase</button>
-          <p>Drag and drop the phases below to suite your project's process</p>
+          <p>Drag and drop the phases below to suite your project's life-cycle</p>
           {phases && (
             <SortableList
               onRemove={onRemove}

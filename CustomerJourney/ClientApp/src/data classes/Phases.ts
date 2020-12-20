@@ -43,7 +43,8 @@ export class Phases {
     }
 
     // Check if the first and last phases the immovable values
-    public postOrderChangeChecks = (newPhases:string[]):boolean => {
+    public postOrderChangeChecks = (newPhases: string[]): boolean => {
+        console.log('PostOrderChecks.', newPhases[0], newPhases[newPhases.length - 1])
         if ((newPhases[0] === 'Unphased') && (newPhases[newPhases.length-1] === 'Completed')) {
             return true;
         }
