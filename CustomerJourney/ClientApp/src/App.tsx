@@ -5,7 +5,7 @@ import { InitialSessionType, SessionContext } from './contexts/session-context';
 import { Session } from './data classes/Session';
 import { sessionReducer } from './reducers/session-Reducer';
 
-import './styling/test.scss'
+import './styling/styles.scss'
 
 export const App = () => {
   const initSession: InitialSessionType = { session: new Session() };

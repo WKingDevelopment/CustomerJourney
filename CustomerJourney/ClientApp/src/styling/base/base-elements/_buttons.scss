@@ -1,0 +1,15 @@
+﻿button {
+    background-color:$project-colour;
+    border: 0.25rem solid $project-colour;
+    border-radius: 0.5rem 0.5rem;
+    color: white;
+}
+
+input {
+    border: 0.25rem solid $input-background;
+    border-radius: 0.5rem 0.5rem;
+    background-color: $input-background;
+    color: $project-inputTxt;
+    padding: 0.25rem;
+    font-weight: 400;
+}

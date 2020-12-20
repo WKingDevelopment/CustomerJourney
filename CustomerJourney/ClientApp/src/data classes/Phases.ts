@@ -26,8 +26,8 @@ export class Phases {
             return `Phase includes invalid character.`
         }
 
-        if (phase.length > 15) {
-            return `Phase has too many characters.`
+        if (phase.length > maxPhaseLength) {
+            return `Phase has too many characters. Max: ${maxPhaseLength.toString()} `
         }
         return undefined
     }
@@ -64,6 +64,8 @@ export class Phases {
     }
 }
 
-const disabledPhases = ['Unphased','Complete']
+const disabledPhases = ['Unphased','Complete'];
+
+const maxPhaseLength = 15;
 
 export { disabledPhases }

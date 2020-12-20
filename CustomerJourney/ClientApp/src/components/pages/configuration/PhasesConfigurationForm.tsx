@@ -74,9 +74,9 @@ const PhasesConfigurationForm = () => {
     return (
         <div>
           <h1>Phase Configuration</h1>
-          {<button className="button_Basic" disabled={buttonDisabled} onClick={onSave}>Save</button>}
+          {<button disabled={buttonDisabled} onClick={onSave}>Save</button>}
           <h2>Add Phase</h2>
-          <div>{error}</div>
+          {error && <div className="input-Error">{error}</div>}
           <input
             type="text"
             placeholder="Add Phase"
