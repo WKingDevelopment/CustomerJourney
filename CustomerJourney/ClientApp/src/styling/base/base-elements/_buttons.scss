@@ -3,13 +3,17 @@
     border: 0.25rem solid $project-colour;
     border-radius: 0.5rem 0.5rem;
     color: $freestanding-text;
+    width:fit-content;
+    height: fit-content;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    margin: 0.25rem;
 }
 
-input {
-    border: 0.25rem solid $input-background;
+.button-X {
+    background-color:$project-colour;
+    border: 0.25rem solid $project-colour;
     border-radius: 0.5rem 0.5rem;
-    background-color: $input-background;
-    color: $input-text;
-    padding: 0.25rem;
-    font-weight: 400;
+    color: $freestanding-text;
+    padding: .1rem .5rem .1rem .5rem;   
+    font-size: small;
 }

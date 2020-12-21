@@ -24,9 +24,9 @@ const SortableList = React.memo(SortableContainer((props:ISortableListProps) => 
 
   const SortableItem = SortableElement((props:ISortableItemProps) => {
     return (
-    <div>
-      {props.showRemove && <button onClick={() => {props.onRemove(props.id)}}>X</button>}
-    <p>{props.label}</p>
+      <div className="cont-horiz">
+        <p>{props.label}</p>
+        {props.showRemove && <button className="button-X" onClick={() => {props.onRemove(props.id)}}>X</button>}
       </div>
     )});
 
