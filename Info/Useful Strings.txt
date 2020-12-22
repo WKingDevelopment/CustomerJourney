@@ -1,6 +1,6 @@
 EF Model Builder
 
-Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CustomerJourney;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models_DBO -Context ClientJourneyContext
+Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CustomerJourney;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" Microsoft.EntityFrameworkCore.SqlServer -Force -OutputDir Models_DBO -UseDatabaseNames -Context ClientJourneyContext
 
 Dev Connection String
 
