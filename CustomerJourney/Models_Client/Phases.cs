@@ -18,17 +18,12 @@ namespace CustomerJourney.Models_Client
         }
 
         #region Public Methods
-        public PhasesDbo ConvertToDbo()
+        public PhasesDBO ConvertToDbo()
         {
-            PhasesDbo phasesDbo = new PhasesDbo();
-            phasesDbo.CompanyId = this.companyId;
-            phasesDbo.Phases = CheckConvertPhasesArray(this.phaseList);
+            PhasesDBO phasesDbo = new PhasesDBO();
+            phasesDbo.companyID = this.companyId;
+            phasesDbo.phases = CheckConvertPhasesArray(this.phaseList);
             return phasesDbo;
-        }
-
-        public Phases ConvertFromDbo(PhasesDbo dbo)
-        {
-            return new Phases(dbo.CompanyId, dbo.Phases.Split('*'));
         }
         #endregion
 

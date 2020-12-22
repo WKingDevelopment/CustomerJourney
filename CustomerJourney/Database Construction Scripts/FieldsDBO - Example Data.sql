@@ -2,12 +2,14 @@ USE [CustomerJourney]
 GO
 
 INSERT INTO [dbo].[FieldsDBO]
-           ([Seq]
-           ,[Mandatory_Phase]
-           ,[Label]
-           ,[Type])
+           ([companyId]
+	   ,[seq]
+           ,[mandatoryPhase]
+           ,[label]
+           ,[type])
      VALUES
            (0
+	   ,0
            ,'Complete'
            ,'Description'
            ,'Text')

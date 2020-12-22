@@ -31,14 +31,14 @@ namespace CustomerJourney.Controllers
                 return BadRequest();
             }
 
-            var phasesDBO = await _context.PhasesDbos.FindAsync(id);
+            var phasesDBO = await _context.PhasesDBOs.FindAsync(id);
 
             if (phasesDBO == null)
             {
                 return NotFound();
             }
 
-            return new Phases(phasesDBO.CompanyId, phasesDBO.Phases.Split('*'));
+            return new Phases(phasesDBO.companyID, phasesDBO.phases.Split('*'));
         }
 
         // PUT: api/PhasesDBOes/5
@@ -79,7 +79,7 @@ namespace CustomerJourney.Controllers
         [HttpPost]
         public async Task<ActionResult<Phases>> PostPhasesDBO(Phases phases)
         {
-            _context.PhasesDbos.Add(phases.ConvertToDbo());
+            _context.PhasesDBOs.Add(phases.ConvertToDbo());
             try
             {
                 await _context.SaveChangesAsync();
@@ -103,13 +103,13 @@ namespace CustomerJourney.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> DeletePhasesDBO(int id)
         {
-            var phasesDBO = await _context.PhasesDbos.FindAsync(id);
+            var phasesDBO = await _context.PhasesDBOs.FindAsync(id);
             if (phasesDBO == null)
             {
                 return NotFound();
             }
 
-            _context.PhasesDbos.Remove(phasesDBO);
+            _context.PhasesDBOs.Remove(phasesDBO);
             await _context.SaveChangesAsync();
 
             return true;
@@ -117,7 +117,7 @@ namespace CustomerJourney.Controllers
 
         private bool PhasesDBOExists(int id)
         {
-            return _context.PhasesDbos.Any(e => e.CompanyId == id);
+            return _context.PhasesDBOs.Any(e => e.companyID == id);
         }
     }
 }

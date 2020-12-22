@@ -17,8 +17,8 @@ namespace CustomerJourney.Models_DBO
         {
         }
 
-        public virtual DbSet<FieldsDbo> FieldsDbos { get; set; }
-        public virtual DbSet<PhasesDbo> PhasesDbos { get; set; }
+        public virtual DbSet<FieldsDBO> FieldsDBOs { get; set; }
+        public virtual DbSet<PhasesDBO> PhasesDBOs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -33,35 +33,31 @@ namespace CustomerJourney.Models_DBO
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<FieldsDbo>(entity =>
+            modelBuilder.Entity<FieldsDBO>(entity =>
             {
                 entity.ToTable("FieldsDBO");
 
-                entity.Property(e => e.Label)
+                entity.Property(e => e.label)
                     .IsRequired()
                     .HasMaxLength(25);
 
-                entity.Property(e => e.MandatoryPhase)
-                    .HasMaxLength(15)
-                    .HasColumnName("Mandatory_Phase");
+                entity.Property(e => e.mandatoryPhase).HasMaxLength(15);
 
-                entity.Property(e => e.Type)
+                entity.Property(e => e.type)
                     .IsRequired()
                     .HasMaxLength(15);
             });
 
-            modelBuilder.Entity<PhasesDbo>(entity =>
+            modelBuilder.Entity<PhasesDBO>(entity =>
             {
-                entity.HasKey(e => e.CompanyId)
-                    .HasName("PK__Config_P__2D971C4C4520B08F");
+                entity.HasKey(e => e.companyID)
+                    .HasName("PK__PhasesDB__AD5459B0FCE4B615");
 
                 entity.ToTable("PhasesDBO");
 
-                entity.Property(e => e.CompanyId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CompanyID");
+                entity.Property(e => e.companyID).ValueGeneratedNever();
 
-                entity.Property(e => e.Phases)
+                entity.Property(e => e.phases)
                     .IsRequired()
                     .HasMaxLength(500);
             });

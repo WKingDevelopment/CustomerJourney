@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace CustomerJourney.Models_DBO
 {
-    public partial class PhasesDbo
+    public partial class PhasesDBO
     {
-        public int CompanyId { get; set; }
-        public string Phases { get; set; }
+        public int companyID { get; set; }
+        public string phases { get; set; }
     }
 }

@@ -2,11 +2,11 @@ USE [CustomerJourney]
 GO
 
 INSERT INTO [dbo].[PhasesDBO]
-           ([CompanyID]
-           ,[Phases])
+           ([companyID]
+           ,[phases])
      VALUES
            (0
-           ,'Unphased*To Estimate*To Order*To Fit*To Pay*Completed')
+           ,'Unphased*To Estimate*To Order*To Fit*To Pay*Complete')
 GO
 
 
