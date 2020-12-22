@@ -6,7 +6,6 @@ const SortableList = React.memo(SortableContainer((props:ISortableListProps) => 
     let key: number = -1
 
     const onRemove = (id:number):void => {
-      console.log(id)
       props.onRemove(removeFromArrayByIndex(id,props.list))
     }
 

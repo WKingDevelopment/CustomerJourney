@@ -35,16 +35,13 @@ const PhasesConfigurationForm = () => {
   }, [JSON.stringify(phases.phaseList), JSON.stringify(savedPhases.phaseList)]);
 
   const onSortEnd = (props: ArrayMoveProps) => {
-    console.log("positions old new", props.oldIndex, props.newIndex);
     if (props.oldIndex !== props.newIndex) {
       const newPhases = arrayMove(
         phases.phaseList,
         props.oldIndex,
         props.newIndex
       );
-      console.log("Phase list.", newPhases);
       if (phases.postOrderChangeChecks(newPhases)) {
-        console.log("Passed post order checks.");
         setPhases(phases.setPhases(newPhases));
       }
     }

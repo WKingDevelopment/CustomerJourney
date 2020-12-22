@@ -7,7 +7,6 @@ const arrayComparer = (array1:any[],array2:any[]):boolean => {
 }
 
 const removeFromArrayByIndex = (index:number, list:string[]): string[] => {
-    console.log(index, list)
     let result: string[] = []
         for (let i=0;i<list.length;i++) {
             if (i !== index) {
