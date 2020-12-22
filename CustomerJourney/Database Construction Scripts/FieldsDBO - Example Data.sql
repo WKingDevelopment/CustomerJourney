@@ -1,7 +1,7 @@
 USE [CustomerJourney]
 GO
 
-INSERT INTO [dbo].[Config_Fields]
+INSERT INTO [dbo].[FieldsDBO]
            ([Seq]
            ,[Mandatory_Phase]
            ,[Label]

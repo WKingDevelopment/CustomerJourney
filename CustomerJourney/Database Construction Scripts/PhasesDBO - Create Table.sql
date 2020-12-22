@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[Config_Phases](
+CREATE TABLE [dbo].[PhasesDBO](
 	[CompanyID] [int] NOT NULL,
 	[Phases] [nvarchar](500) NOT NULL,
 PRIMARY KEY CLUSTERED 

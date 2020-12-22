@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[Config_Fields](
+CREATE TABLE [dbo].[FieldsDBO](
 	[Id] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	[Seq] [int] NOT NULL,
 	[Mandatory_Phase] [nvarchar](15) NULL,

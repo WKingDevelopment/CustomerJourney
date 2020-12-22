@@ -1,7 +1,7 @@
 USE [CustomerJourney]
 GO
 
-INSERT INTO [dbo].[Config_Phases]
+INSERT INTO [dbo].[PhasesDBO]
            ([CompanyID]
            ,[Phases])
      VALUES
