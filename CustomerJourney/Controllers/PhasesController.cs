@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using CustomerJourney.Models;
-using CustomerJourney.ModelsDBO;
 using CustomerJourney.Models_Client;
+using CustomerJourney.Models_DBO;
 
 namespace CustomerJourney.Controllers
 {
@@ -32,14 +31,14 @@ namespace CustomerJourney.Controllers
                 return BadRequest();
             }
 
-            var phasesDBO = await _context.ConfigPhases.FindAsync(id);
+            var phasesDBO = await _context.PhasesDbos.FindAsync(id);
 
             if (phasesDBO == null)
             {
                 return NotFound();
             }
 
-            return phasesDBO.ConvertToClientObj();
+            return new Phases(phasesDBO.CompanyId, phasesDBO.Phases.Split('*'));
         }
 
         // PUT: api/PhasesDBOes/5
@@ -53,8 +52,7 @@ namespace CustomerJourney.Controllers
                 return BadRequest();
             }
 
-            PhasesDBO phasesDBO = new PhasesDBO(phases);
-            _context.Entry(phasesDBO).State = EntityState.Modified;
+            _context.Entry(phases.ConvertToDbo()).State = EntityState.Modified;
 
             try
             {
@@ -79,16 +77,16 @@ namespace CustomerJourney.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<PhasesDBO>> PostPhasesDBO(PhasesDBO phasesDBO)
+        public async Task<ActionResult<Phases>> PostPhasesDBO(Phases phases)
         {
-            _context.ConfigPhases.Add(phasesDBO);
+            _context.PhasesDbos.Add(phases.ConvertToDbo());
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (PhasesDBOExists(phasesDBO.CompanyId))
+                if (PhasesDBOExists(phases.companyId))
                 {
                     return Conflict();
                 }
@@ -98,28 +96,28 @@ namespace CustomerJourney.Controllers
                 }
             }
 
-            return CreatedAtAction("GetPhasesDBO", new { id = phasesDBO.CompanyId }, phasesDBO);
+            return CreatedAtAction("GetPhasesDBO", new { id = phases.companyId }, phases.ConvertToDbo());
         }
 
         // DELETE: api/PhasesDBOes/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<PhasesDBO>> DeletePhasesDBO(int id)
+        public async Task<ActionResult<bool>> DeletePhasesDBO(int id)
         {
-            var phasesDBO = await _context.ConfigPhases.FindAsync(id);
+            var phasesDBO = await _context.PhasesDbos.FindAsync(id);
             if (phasesDBO == null)
             {
                 return NotFound();
             }
 
-            _context.ConfigPhases.Remove(phasesDBO);
+            _context.PhasesDbos.Remove(phasesDBO);
             await _context.SaveChangesAsync();
 
-            return phasesDBO;
+            return true;
         }
 
         private bool PhasesDBOExists(int id)
         {
-            return _context.ConfigPhases.Any(e => e.CompanyId == id);
+            return _context.PhasesDbos.Any(e => e.CompanyId == id);
         }
     }
 }

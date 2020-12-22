@@ -1,11 +1,10 @@
 ﻿using System;
-using CustomerJourney.ModelsDBO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace CustomerJourney.Models
+namespace CustomerJourney.Models_DBO
 {
     public partial class ClientJourneyContext : DbContext
     {
@@ -18,7 +17,8 @@ namespace CustomerJourney.Models
         {
         }
 
-        public virtual DbSet<PhasesDBO> ConfigPhases { get; set; }
+        public virtual DbSet<FieldsDbo> FieldsDbos { get; set; }
+        public virtual DbSet<PhasesDbo> PhasesDbos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -33,12 +33,29 @@ namespace CustomerJourney.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<PhasesDBO>(entity =>
+            modelBuilder.Entity<FieldsDbo>(entity =>
+            {
+                entity.ToTable("FieldsDBO");
+
+                entity.Property(e => e.Label)
+                    .IsRequired()
+                    .HasMaxLength(25);
+
+                entity.Property(e => e.MandatoryPhase)
+                    .HasMaxLength(15)
+                    .HasColumnName("Mandatory_Phase");
+
+                entity.Property(e => e.Type)
+                    .IsRequired()
+                    .HasMaxLength(15);
+            });
+
+            modelBuilder.Entity<PhasesDbo>(entity =>
             {
                 entity.HasKey(e => e.CompanyId)
-                    .HasName("PK__Config_P__2D971C4C528769AD");
+                    .HasName("PK__Config_P__2D971C4C4520B08F");
 
-                entity.ToTable("Config_Phases");
+                entity.ToTable("PhasesDBO");
 
                 entity.Property(e => e.CompanyId)
                     .ValueGeneratedNever()

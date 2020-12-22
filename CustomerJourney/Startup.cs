@@ -1,4 +1,4 @@
-using CustomerJourney.Models;
+using CustomerJourney.Models_DBO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
