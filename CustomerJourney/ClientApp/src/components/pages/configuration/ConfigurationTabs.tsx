@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { constants } from '../../../constants/constants';
-import { PhasesConfigurationForm } from './PhasesConfigurationForm';
+import { PhasesConfigurationForm } from './PhaseTab/PhasesConfigurationForm';
 
 const ConfigurationTabs = () => {
     const [key, setKey] = useState(constants.tabs.phases);

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { arrayMove } from "react-sortable-hoc";
-import { apiGetPhases, apiPutPhases } from "../../../apiCalls/phases";
-import { SessionContext } from "../../../contexts/session-context";
-import { disabledPhases, Phases } from "../../../data classes/Phases";
-import { arrayComparer } from "../../../general_Functions/array_Functions";
-import { SortableList } from "../../shared components/SortableList";
+import { apiGetPhases, apiPutPhases } from "../../../../apiCalls/phases";
+import { SessionContext } from "../../../../contexts/session-context";
+import { disabledPhases, Phases } from "../../../../data classes/Phases";
+import { arrayComparer } from "../../../../general_Functions/array_Functions";
+import { SortableList } from "../../../shared components/SortableList";
 
 const PhasesConfigurationForm = () => {
   const [newPhaseLabel, setNewPhaseLabel] = useState<string>("");

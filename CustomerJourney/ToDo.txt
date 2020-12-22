@@ -2,3 +2,23 @@
 
 Sign Up
 - Add default Phases
+
+Fields
+- Mandatory fields for phases / function 'rest value on field: if phaseList.IndexOf(mandatoryPhase) < phaseIndexOf(Phase) / 
+
+
+
+
+
+
+
+
+
+PLANS
+Fields 
+- Database fields: Seq, Mandatory Phase(15), Label(25), Type(Text, Number, Boolean, Date Time), Size (Small, Medium, Large)
+- 
+
+
+Item Details
+- Mandatory - calculated in the props of each field
