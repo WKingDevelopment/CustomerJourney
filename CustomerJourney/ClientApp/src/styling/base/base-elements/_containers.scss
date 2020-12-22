@@ -1,5 +1,9 @@
-.cont-horiz-sa .cont-horiz  {
+.sa  {
     justify-content: space-around;
+}
+
+.sb {
+    justify-content: space-between;
 }
 
 .cont-horiz {
@@ -15,4 +19,8 @@
     padding: 1rem;
     width: fit-content;
     height: fit-content;
+}
+
+.small {
+    width: 17rem;
 }

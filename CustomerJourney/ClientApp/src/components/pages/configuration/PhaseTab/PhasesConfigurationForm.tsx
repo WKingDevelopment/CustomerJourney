@@ -84,7 +84,7 @@ const PhasesConfigurationForm = () => {
       </div>
       <div className="cont-border">
           <h3>Add Phase</h3>
-          <div className="cont-horiz-sa">
+          <div className="cont-horiz sa">
           {error && <div className="input-Error">{error}</div>}
           <input
             type="text"
@@ -96,12 +96,14 @@ const PhasesConfigurationForm = () => {
         </div>
         <p>Drag and drop the phases below to suite your project's life-cycle</p>
         {phases && (
+          <div className="small">
           <SortableList
             onRemove={onRemove}
             list={phases.phaseList}
             disabledList={disabledPhases}
             onSortEnd={onSortEnd}
           />
+          </div>
         )}
       </div>
     </div>
