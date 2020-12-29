@@ -3,16 +3,18 @@ GO
 
 INSERT INTO [dbo].[FieldsDBO]
            ([companyId]
-	   ,[seq]
+	       ,[seq]
            ,[mandatoryPhase]
            ,[label]
-           ,[type])
+           ,[type]
+		   ,[summary])
      VALUES
            (0
-	   ,0
+		   ,0
            ,'Complete'
            ,'Description'
-           ,'Text')
+           ,'Text'
+		   ,1)
 GO
 
 

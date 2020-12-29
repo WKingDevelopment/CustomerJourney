@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[FieldsDBO](
 	[mandatoryPhase] [nvarchar](15) NULL,
 	[label] [nvarchar](25) NOT NULL,
 	[type] [nvarchar](15) NOT NULL,
+	[summary] [bit] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

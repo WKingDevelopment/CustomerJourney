@@ -51,7 +51,7 @@ namespace CustomerJourney.Models_DBO
             modelBuilder.Entity<PhasesDBO>(entity =>
             {
                 entity.HasKey(e => e.companyID)
-                    .HasName("PK__PhasesDB__AD5459B0FCE4B615");
+                    .HasName("PK__PhasesDB__AD5459B014256BF1");
 
                 entity.ToTable("PhasesDBO");
 

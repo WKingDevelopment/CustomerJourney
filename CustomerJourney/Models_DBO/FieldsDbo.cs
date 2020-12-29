@@ -1,12 +1,11 @@
-﻿using CustomerJourney.Models_Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 #nullable disable
 
 namespace CustomerJourney.Models_DBO
 {
-    public partial class FieldsDBO : Field
+    public partial class FieldsDBO
     {
         public int id { get; set; }
         public int companyId { get; set; }
@@ -14,5 +13,6 @@ namespace CustomerJourney.Models_DBO
         public string mandatoryPhase { get; set; }
         public string label { get; set; }
         public string type { get; set; }
+        public bool summary { get; set; }
     }
 }
