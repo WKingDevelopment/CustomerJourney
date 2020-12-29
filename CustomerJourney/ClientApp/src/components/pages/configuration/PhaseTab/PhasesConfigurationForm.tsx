@@ -14,22 +14,15 @@ const PhasesConfigurationForm = () => {
 
   const [newPhaseLabel, setNewPhaseLabel] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [phases, setPhases] = useState<Phases>(new Phases());
+  const [phases, setPhases] = useState<Phases>(config.phases);
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
-  const [savedPhases, setSavedPhases] = useState<Phases>(phases);
+  const [savedPhases, setSavedPhases] = useState<Phases>(config.phases);
+
+  console.log('PhaseConfig Page Config', config, phases)
 
   useEffect(() => {
-    async function getPhases() {
-      const response = await apiGetPhases(session.session);
-      if (response != undefined) {
-        setPhases(response);
-        setSavedPhases(response);
-      }
-    }
-    getPhases();
-  }, []);
-
-  console.log(session, config)
+    setPhases(config.phases)
+  }, [JSON.stringify(config.phases)]);
 
   useEffect(() => {
     const same = arrayComparer(savedPhases.phaseList, phases.phaseList);
@@ -115,10 +108,6 @@ const PhasesConfigurationForm = () => {
     </div>
   );
 };
-
-interface IPhasesConfigurationFormProps {
-  phases: Phases;
-}
 
 interface ArrayMoveProps {
   newIndex: number;

@@ -1,6 +1,8 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { Route } from 'react-router';
+import { apiGetPhases } from './apiCalls/phases';
 import { ConfigurationPage } from './components/pages/ConfigurationPage';
+import { reducerConstants } from './constants/reducer-Constants';
 import { ConfigurationContext, InitialConfigurationType } from './contexts/configuration-context';
 import { InitialSessionType, SessionContext } from './contexts/session-context';
 import { Phases } from './data classes/Phases';
@@ -15,6 +17,16 @@ export const App = () => {
   const initConfig: InitialConfigurationType = { phases: new Phases };
   const [session, sessionDispatch] = useReducer(sessionReducer, initSession)
   const [config, configDispatch] = useReducer(configReducer, initConfig)
+
+  useEffect(() => {
+        async function getPhases() {
+          const response = await apiGetPhases(session.session);
+          if (response != undefined) {
+            configDispatch({type:reducerConstants.setPhases,phases:response});
+          }
+        }
+        getPhases();
+      }, []);
 
   return (
     <ConfigurationContext.Provider value={{config, configDispatch}}>

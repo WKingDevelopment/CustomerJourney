@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ConfigurationContext } from '../../../../contexts/configuration-context';
+import { SessionContext } from '../../../../contexts/session-context';
+import { AddNewFieldForm } from './AddNewFieldSubForm';
 import { ChecklistConfigurationForm } from './ChecklistConfigurationForm';
 import { FieldsConfigurationForm } from './FieldsConfigurationForm';
 
 const ItemConfigurationForm = () => {
     const [saveDisabled, setSaveDisabled] = useState<boolean>(true)
-
-    // useEffect(() => {
-    //     async function getPhases() {
-    //       const response = await apiGetPhases(session.session);
-    //       if (response != undefined) {
-    //         setPhases(response);
-    //         setSavedPhases(response);
-    //       }
-    //     }
-    //     getPhases();
-    //   }, []);
+    const { config, configDispatch } = useContext(ConfigurationContext);
 
     const onSave = () => {
 
     }
+
+    const onAddField = () => {
+
+    }
+
     return (
         <div>
             <div className="cont-horiz">
@@ -29,6 +27,7 @@ const ItemConfigurationForm = () => {
                 </button>
                 }
             </div>
+            <AddNewFieldForm phases={config.phases.phaseList} onAddField={onAddField}/>
             <div>
                 <FieldsConfigurationForm/>
                 <ChecklistConfigurationForm/>

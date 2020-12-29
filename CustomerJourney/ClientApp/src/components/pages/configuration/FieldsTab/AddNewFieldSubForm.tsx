@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown';
 import { constants } from '../../../../constants/constants'
 import { Field } from '../../../../data classes/Field';
 
-const AddNewField = (props:AddNewFieldProps) => {
+const AddNewFieldForm = (props:AddNewFieldProps) => {
     const [label, setLabel] = useState<string>('')
     const [type, setType] = useState<string>(constants.fieldTypes[0])
     const [mandatoryPhase, setMandatoryPhase] = useState<string>(props.phases[0])
@@ -25,4 +25,4 @@ interface AddNewFieldProps {
     onAddField: (field:Field) => void
 }
 
-export { AddNewField }
+export { AddNewFieldForm }
