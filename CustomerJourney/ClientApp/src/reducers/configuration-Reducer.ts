@@ -9,7 +9,6 @@ const configReducer = (state:InitialConfigurationType,action:configutaionAction)
                 ...state
             }
         case reducerConstants.setPhases:
-            console.log("Config Reducer Hit", action.phases)
             return {
                 ...state,
                 phases: action.phases

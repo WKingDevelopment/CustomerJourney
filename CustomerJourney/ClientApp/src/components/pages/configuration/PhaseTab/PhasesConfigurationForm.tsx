@@ -18,8 +18,6 @@ const PhasesConfigurationForm = () => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
   const [savedPhases, setSavedPhases] = useState<Phases>(config.phases);
 
-  console.log('PhaseConfig Page Config', config, phases)
-
   useEffect(() => {
     setPhases(config.phases)
   }, [JSON.stringify(config.phases)]);

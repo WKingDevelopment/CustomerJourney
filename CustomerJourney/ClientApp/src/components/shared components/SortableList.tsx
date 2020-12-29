@@ -4,7 +4,6 @@ import { removeFromArrayByIndex } from '../../general_Functions/array_Functions'
 
 const SortableList = React.memo(SortableContainer((props:ISortableListProps) => {
     let key: number = -1
-  console.log("Sortable List", props.list)
     const onRemove = (id:number):void => {
       props.onRemove(removeFromArrayByIndex(id,props.list))
     }
