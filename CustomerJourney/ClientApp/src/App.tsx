@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import { Route } from 'react-router';
+import { apiGetFields } from './apiCalls/Fields';
 import { apiGetPhases } from './apiCalls/phases';
 import { ConfigurationPage } from './components/pages/ConfigurationPage';
 import { reducerConstants } from './constants/reducer-Constants';
@@ -20,6 +21,7 @@ export const App = () => {
 
   useEffect(() => {
         async function getPhases() {
+          apiGetFields(session.session)
           const response = await apiGetPhases(session.session);
           if (response != undefined) {
             configDispatch({type:reducerConstants.setPhases,phases:response});

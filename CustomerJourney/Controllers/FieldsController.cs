@@ -23,7 +23,7 @@ namespace CustomerJourney.Controllers
         }
 
         // GET: api/Fields/5
-        [HttpPut("{id}")]
+        [HttpPut("Get/{id}")]
         // Gets all fields relating to a company, separates into main and checklist and sends down.
         public async Task<ActionResult<Fields>> GetFields(int id, Session sesh)
         {
