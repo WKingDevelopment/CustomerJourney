@@ -7,8 +7,8 @@ namespace CustomerJourney.Models_Client
 {
     public class Fields
     {
-        Field[] mainFields;
-        Field[] checklistFields;
+        public Field[] mainFields;
+        public Field[] checklistFields;
 
         public Fields(Field[] _mainFields, Field[] _checklistFields)
         {

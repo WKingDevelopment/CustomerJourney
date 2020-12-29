@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CustomerJourney.Models_DBO;
 using CustomerJourney.Models_Client;
+using System.Runtime.Serialization;
 
 namespace CustomerJourney.Controllers
 {
