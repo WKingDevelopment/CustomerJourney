@@ -1,7 +1,8 @@
+import { constants } from "../constants/constants";
 import { isEmptyOrSpace } from "../general_Functions/validations_Functions";
 
 export class Phases {
-    constructor(public phaseList: string[] = []) {}
+    constructor(public phaseList: string[] = constants.disabledPhases) {}
 
     //#region Public Methods & Functions
     public insertPhase = (phase:string):Phases => {
@@ -63,8 +64,4 @@ export class Phases {
     }
 }
 
-const disabledPhases = ['Unphased','Complete'];
-
 const maxPhaseLength = 15;
-
-export { disabledPhases }

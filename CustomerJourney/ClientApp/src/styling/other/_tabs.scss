@@ -8,7 +8,7 @@
     }
   
     &__tab {
-      margin-left: 0.5rem;
+      margin-left: 0.15rem;
       display: inline-block;
       border: 1px solid transparent;
       border-bottom: none;
@@ -19,7 +19,8 @@
       cursor: pointer;
       background: $project-colour;
       color: white;
-  
+      border-radius: 5px 5px 0 0;
+
       &--selected {
         background: $project-colour;
         border-color: #aaa;

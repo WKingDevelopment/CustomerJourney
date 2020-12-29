@@ -12,12 +12,12 @@ const initialState: InitialSessionType = {
 const SessionContext = React.createContext<
 {
     session:InitialSessionType,
-    dispatch: React.Dispatch<any>;
+    sessionDispatch: React.Dispatch<any>;
 }>
 (
     {
         session:initialState,
-        dispatch: () => null
+        sessionDispatch: () => null
     }
 )
 

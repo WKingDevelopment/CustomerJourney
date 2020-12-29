@@ -1,17 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { arrayMove } from "react-sortable-hoc";
 import { apiGetPhases, apiPutPhases } from "../../../../apiCalls/phases";
+import { constants } from "../../../../constants/constants";
+import { ConfigurationContext } from "../../../../contexts/configuration-context";
 import { SessionContext } from "../../../../contexts/session-context";
-import { disabledPhases, Phases } from "../../../../data classes/Phases";
+import { Phases } from "../../../../data classes/Phases";
 import { arrayComparer } from "../../../../general_Functions/array_Functions";
 import { SortableList } from "../../../shared components/SortableList";
 
 const PhasesConfigurationForm = () => {
+  const { session, sessionDispatch } = useContext(SessionContext);
+  const { config, configDispatch } = useContext(ConfigurationContext);
+
   const [newPhaseLabel, setNewPhaseLabel] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [phases, setPhases] = useState<Phases>(new Phases(disabledPhases));
+  const [phases, setPhases] = useState<Phases>(new Phases());
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
-  const { session, dispatch } = useContext(SessionContext);
   const [savedPhases, setSavedPhases] = useState<Phases>(phases);
 
   useEffect(() => {
@@ -24,6 +28,8 @@ const PhasesConfigurationForm = () => {
     }
     getPhases();
   }, []);
+
+  console.log(session, config)
 
   useEffect(() => {
     const same = arrayComparer(savedPhases.phaseList, phases.phaseList);
@@ -100,7 +106,7 @@ const PhasesConfigurationForm = () => {
           <SortableList
             onRemove={onRemove}
             list={phases.phaseList}
-            disabledList={disabledPhases}
+            disabledList={constants.disabledPhases}
             onSortEnd={onSortEnd}
           />
           </div>
