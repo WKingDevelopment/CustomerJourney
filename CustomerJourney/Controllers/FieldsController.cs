@@ -21,83 +21,95 @@ namespace CustomerJourney.Controllers
             _context = context;
         }
 
-    //    // GET: api/Fields/5
-    //    [HttpGet("{id}")]
-    //    public async Task<ActionResult<Field>> GetFields(int id)
-    //    {
-    //        var fieldsDbo = await _context.FieldsDbos.Where(f => f.);
+        // GET: api/Fields/5
+        [HttpPut("{id}")]
+        // Gets all fields relating to a company, separates into main and checklist and sends down.
+        public async Task<ActionResult<Fields>> GetFields(int id, Session sesh)
+        {
+            if (id != sesh.companyId)
+            {
+               return BadRequest();
+            }
+            var fieldsDbo = await _context.FieldsDBOs.Where(f => f.companyId == id).OrderBy(r => r.seq).ToArrayAsync();
 
-    //        if (fieldsDbo == null)
-    //        {
-    //            return NotFound();
-    //        }
+            if (fieldsDbo == null)
+            {
+                return NotFound();
+            }
 
-    //        return fieldsDbo;
-    //    }
+            List<Field> mainFields = new List<Field>();
+            List<Field> checklistFields = new List<Field>();
 
-    //    // PUT: api/Fields/5
-    //    // To protect from overposting attacks, enable the specific properties you want to bind to, for
-    //    // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-    //    [HttpPut("{id}")]
-    //    public async Task<IActionResult> PutField(int id, Field fieldsDbo)
-    //    {
-    //        if (id != fieldsDbo.Id)
-    //        {
-    //            return BadRequest();
-    //        }
+            foreach(Field f in fieldsDbo)
+            {
+                if (f.type == "Boolean") { checklistFields.Add(f); } else { mainFields.Add(f); };
+            }
+            return new Fields(mainFields.ToArray(), checklistFields.ToArray());
+        }
 
-    //        _context.Entry(fieldsDbo).State = EntityState.Modified;
+        //// PUT: api/Fields/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutField(int id, Field fieldsDbo)
+        //{
+        //    if (id != fieldsDbo.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-    //        try
-    //        {
-    //            await _context.SaveChangesAsync();
-    //        }
-    //        catch (DbUpdateConcurrencyException)
-    //        {
-    //            if (!FieldsDboExists(id))
-    //            {
-    //                return NotFound();
-    //            }
-    //            else
-    //            {
-    //                throw;
-    //            }
-    //        }
+        //    _context.Entry(fieldsDbo).State = EntityState.Modified;
 
-    //        return NoContent();
-    //    }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!FieldsDboExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-    //    // POST: api/Fields
-    //    // To protect from overposting attacks, enable the specific properties you want to bind to, for
-    //    // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-    //    [HttpPost]
-    //    public async Task<ActionResult<FieldsDbo>> PostField(Field fieldsDbo)
-    //    {
-    //        _context.FieldsDbos.Add(fieldsDbo);
-    //        await _context.SaveChangesAsync();
+        //    return NoContent();
+        //}
 
-    //        return CreatedAtAction("GetFieldsDbo", new { id = fieldsDbo.Id }, fieldsDbo);
-    //    }
+        //// POST: api/Fields
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //[HttpPost]
+        //public async Task<ActionResult<FieldsDbo>> PostField(Field fieldsDbo)
+        //{
+        //    _context.FieldsDbos.Add(fieldsDbo);
+        //    await _context.SaveChangesAsync();
 
-    //    // DELETE: api/Fields/5
-    //    [HttpDelete("{id}")]
-    //    public async Task<ActionResult<Field>> DeleteFieldsDbo(int id)
-    //    {
-    //        var fieldsDbo = await _context.FieldsDbos.FindAsync(id);
-    //        if (fieldsDbo == null)
-    //        {
-    //            return NotFound();
-    //        }
+        //    return CreatedAtAction("GetFieldsDbo", new { id = fieldsDbo.Id }, fieldsDbo);
+        //}
 
-    //        _context.FieldsDbos.Remove(fieldsDbo);
-    //        await _context.SaveChangesAsync();
+        //// DELETE: api/Fields/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult<Field>> DeleteFieldsDbo(int id)
+        //{
+        //    var fieldsDbo = await _context.FieldsDbos.FindAsync(id);
+        //    if (fieldsDbo == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-    //        return fieldsDbo;
-    //    }
+        //    _context.FieldsDbos.Remove(fieldsDbo);
+        //    await _context.SaveChangesAsync();
 
-    //    private bool FieldsDboExists(int id)
-    //    {
-    //        return _context.FieldsDbos.Any(e => e.Id == id);
-    //    }
+        //    return fieldsDbo;
+        //}
+
+        //private bool FieldsDboExists(int id)
+        //{
+        //    return _context.FieldsDbos.Any(e => e.Id == id);
+        //}
     }
 }

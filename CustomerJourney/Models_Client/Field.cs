@@ -8,9 +8,9 @@ namespace CustomerJourney.Models_Client
 {
     public class Field : Session
     {
-        public virtual string mandatoryPhase { get; set; }
-        public virtual string label { get; set; }
-        public virtual string type { get; set; }
+        public string mandatoryPhase { get; set; }
+        public string label { get; set; }
+        public string type { get; set; }
 
         #region Public Methods
         public FieldsDBO ConvertToDbo()
