@@ -3,6 +3,7 @@ GO
 
 INSERT INTO [dbo].[FieldsDBO]
            ([companyId]
+		   ,[size]
 	       ,[seq]
            ,[mandatoryPhase]
            ,[label]
@@ -10,10 +11,11 @@ INSERT INTO [dbo].[FieldsDBO]
 		   ,[summary])
      VALUES
            (0
+		   ,'Small'
 		   ,0
            ,'Complete'
-           ,'Description'
-           ,'Text'
+           ,'House Number'
+           ,'Number'
 		   ,1)
 GO
 

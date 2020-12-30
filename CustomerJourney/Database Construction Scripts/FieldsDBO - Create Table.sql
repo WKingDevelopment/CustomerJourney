@@ -12,6 +12,7 @@ CREATE TABLE [dbo].[FieldsDBO](
 	[companyId] [int] NOT NULL,
 	[seq] [int] NOT NULL,
 	[mandatoryPhase] [nvarchar](15) NULL,
+	[size] [nvarchar](10) NOT NULL,
 	[label] [nvarchar](25) NOT NULL,
 	[type] [nvarchar](15) NOT NULL,
 	[summary] [bit] NOT NULL,

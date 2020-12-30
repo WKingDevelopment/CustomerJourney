@@ -9,7 +9,6 @@ const fieldsReducer = (state:InitialFieldsType,action:fieldsAction): InitialFiel
                 ...state
             }
         case reducerConstants.setFields:
-            console.log('fields Reducer',action.fields)
             return {
                 ...state,
                 fields: action.fields
