@@ -1,8 +1,8 @@
 import { reducerConstants } from "../constants/reducer-Constants"
-import { InitialConfigurationType } from "../contexts/configuration-context"
+import { InitialPhasesType } from "../contexts/phases-context"
 import { Phases } from "../data classes/Phases"
 
-const configReducer = (state:InitialConfigurationType,action:configutaionAction): InitialConfigurationType => {
+const phasesReducer = (state:InitialPhasesType,action:phasesAction): InitialPhasesType => {
     switch (action.type) {
         case reducerConstants.state:
             return {
@@ -16,11 +16,9 @@ const configReducer = (state:InitialConfigurationType,action:configutaionAction)
         }
         return state
 }
-type configutaionAction = {
+type phasesAction = {
     type: string,
-    phases:Phases
+    phases:Phases,
 }
 
-
-
-export { configReducer } 
+export { phasesReducer } 

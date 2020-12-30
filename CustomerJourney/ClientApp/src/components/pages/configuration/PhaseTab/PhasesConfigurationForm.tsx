@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { arrayMove } from "react-sortable-hoc";
 import { apiGetPhases, apiPutPhases } from "../../../../apiCalls/phases";
 import { constants } from "../../../../constants/constants";
-import { ConfigurationContext } from "../../../../contexts/configuration-context";
+import { PhasesContext } from "../../../../contexts/phases-context";
 import { SessionContext } from "../../../../contexts/session-context";
 import { Phases } from "../../../../data classes/Phases";
 import { arrayComparer } from "../../../../general_Functions/array_Functions";
@@ -10,17 +10,17 @@ import { SortableList } from "../../../shared components/SortableList";
 
 const PhasesConfigurationForm = () => {
   const { session, sessionDispatch } = useContext(SessionContext);
-  const { config, configDispatch } = useContext(ConfigurationContext);
+  const { phasesConfig, phasesDispatch } = useContext(PhasesContext);
 
   const [newPhaseLabel, setNewPhaseLabel] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [phases, setPhases] = useState<Phases>(config.phases);
+  const [phases, setPhases] = useState<Phases>(phasesConfig.phases);
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(true);
-  const [savedPhases, setSavedPhases] = useState<Phases>(config.phases);
+  const [savedPhases, setSavedPhases] = useState<Phases>(phasesConfig.phases);
 
   useEffect(() => {
-    setPhases(config.phases)
-  }, [JSON.stringify(config.phases)]);
+    setPhases(phasesConfig.phases)
+  }, [JSON.stringify(phasesConfig.phases)]);
 
   useEffect(() => {
     const same = arrayComparer(savedPhases.phaseList, phases.phaseList);
