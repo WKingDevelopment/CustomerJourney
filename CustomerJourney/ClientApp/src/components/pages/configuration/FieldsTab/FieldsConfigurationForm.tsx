@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Field } from '../../../../data classes/Field';
 import { SortableFieldsList } from '../../../shared components/SortableFieldsList';
 
 const FieldsConfigurationForm = (props:IFieldsConfigurationFormProps) => {
+
+    useEffect(() => {
+        
+    },[JSON.stringify(props.fields)])
 
     const onRemove = () => {
 
@@ -19,7 +23,8 @@ const FieldsConfigurationForm = (props:IFieldsConfigurationFormProps) => {
 }
 
 interface IFieldsConfigurationFormProps {
-    fields: Field[]
+    fields: Field[],
+    onUpdateFields: (fields: Field[], type:string) => void
 }
 
 export { FieldsConfigurationForm }

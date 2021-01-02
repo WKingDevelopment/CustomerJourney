@@ -1,0 +1,24 @@
+.dropdown {
+    margin: 0 2rem 0 2rem;
+    width: 10rem;
+}
+
+.dropdown-placeholder {
+    padding: 3rem 3rem 3rem 3rem;
+    border: 0.1rem solid $input-background;
+    padding: 1rem 2rem 1rem 2rem;
+    text-align: center;
+    width: 10rem;
+    font-size: 1rem;
+}
+
+.dropdown-menus {
+    text-align: center;
+    border: 0.1rem solid $input-background;
+    background-color: rgb(54, 53, 53);
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0 0.5rem 0;
+    font-size: 1rem;
+}

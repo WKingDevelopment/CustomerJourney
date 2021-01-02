@@ -9,20 +9,26 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
     const [mandatoryPhase, setMandatoryPhase] = useState<string>(props.phases[0])
     const [size, setSize] = useState<string>(constants.fieldSizes[0]);
 
+    const onAddField = (newField: Field) => {
+        if(props.onAddField(newField)) {
+            setLabel('')
+        }   
+    }
+
     return (
-        <div>
-            <input value={label} onChange={(e) => { setLabel(e.target.value) }} />
-            <Dropdown options={constants.fieldTypes} value={type} onChange={(e:any) => { setType(e.value) }} />
-            {<Dropdown options={constants.fieldSizes} value={size} onChange={(e:any) => {setSize(e.value)}}/>}
-            {<Dropdown options={props.phases} value={mandatoryPhase} onChange={(e:any) => { setMandatoryPhase(e.value) }} />}
-            <button value='Add' onClick={() => {props.onAddField(new Field(label,mandatoryPhase,type,size))}}>Add</button>
+        <div className="cont-left width-75">
+            <input className="input-small" value={label} onChange={(e) => { setLabel(e.target.value) }} />
+            <Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldTypes} value={type} onChange={(e:any) => { setType(e.value) }} />
+            {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldSizes} value={size} onChange={(e:any) => {setSize(e.value)}}/>}
+            {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={props.phases} value={mandatoryPhase} onChange={(e:any) => { setMandatoryPhase(e.value) }} />}
+            <button className="button-large" value='Add' onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size))}}>Add</button>
         </div>
     )
 }
 
 interface AddNewFieldProps {
     phases: string[],
-    onAddField: (field:Field) => void
+    onAddField: (newField: Field) => boolean
 }
 
 export { AddNewFieldForm }

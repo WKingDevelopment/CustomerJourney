@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import { Field } from "../../data classes/Field";
 
@@ -8,6 +8,8 @@ const SortableFieldsList = React.memo(
     const onRemove = (id: number): void => {
       props.onRemove([]);
     };
+
+    useEffect(() => {},[JSON.stringify(props.list)])
 
     return (
       <table>
@@ -37,21 +39,22 @@ const SortableFieldsList = React.memo(
 );
 
 const SortableItem = SortableElement((props: ISortableItemProps) => {
-  console.log(props.field);
   return (
     <tr key={props.id}>
       <td>{props.field.label}</td>
       <td>{props.field.type}</td>
       <td>{props.field.size}</td>
       <td>{props.field.mandatoryPhase}</td>
-      <button
-        className="button-X"
-        onClick={() => {
-          props.onRemove(props.id);
-        }}
-      >
-        X
-      </button>
+      <td>
+        <button
+          className="button-X"
+          onClick={() => {
+            props.onRemove(props.id);
+          }}
+        >
+          X
+        </button>
+      </td>
     </tr>
   );
 });

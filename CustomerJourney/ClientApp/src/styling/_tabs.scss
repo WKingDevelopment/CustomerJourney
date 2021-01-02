@@ -10,7 +10,7 @@
     &__tab {
       margin-left: 0.15rem;
       display: inline-block;
-      border: 1px solid transparent;
+      border: 2px solid transparent;
       border-bottom: none;
       bottom: -1px;
       position: relative;
@@ -20,10 +20,11 @@
       background: $project-colour;
       color: white;
       border-radius: 5px 5px 0 0;
+      font-size: large;
 
       &--selected {
         background: $project-colour;
-        border-color: #aaa;
+        border-color:white;
         color: white;
         border-radius: 5px 5px 0 0;
       }
