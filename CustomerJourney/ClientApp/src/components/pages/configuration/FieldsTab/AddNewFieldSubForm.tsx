@@ -16,11 +16,20 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
     }
 
     return (
-        <div className="cont-left width-75">
+        <div className="cont-left width-85">
             <input className="input-small" value={label} onChange={(e) => { setLabel(e.target.value) }} />
-            <Dropdown className="dropdown"  placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldTypes} value={type} onChange={(e:any) => { setType(e.value) }} />
-            {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldSizes} value={size} onChange={(e:any) => {setSize(e.value)}}/>}
-            {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={props.phases} value={mandatoryPhase} onChange={(e:any) => { setMandatoryPhase(e.value) }} />}
+            <div className="cont-horiz baseline">
+                <p>Data Type:</p>
+                <Dropdown className="dropdown"  placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldTypes} value={type} onChange={(e:any) => { setType(e.value) }} />
+            </div>
+            <div className="cont-horiz baseline">
+                <p>Size:</p>
+                {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldSizes} value={size} onChange={(e:any) => {setSize(e.value)}}/>}
+            </div>
+            <div className="cont-horiz baseline">
+                <p>mandatory Phase:</p>
+                {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={props.phases} value={mandatoryPhase} onChange={(e:any) => { setMandatoryPhase(e.value) }} />}
+            </div>
             <button className="button-large" value='Add' onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size))}}>Add</button>
         </div>
     )
