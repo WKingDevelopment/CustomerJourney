@@ -6,7 +6,7 @@ import { ArrayMoveProps, SortableFieldsList } from '../../../shared components/S
 const FieldsConfigurationForm = (props:IFieldsConfigurationFormProps) => {
 
     const onRemove = (index: number) => {
-        props.onUpdateFields(fieldArrayRemoveByIndex(props.fields,index), updateType);
+        props.onUpdateFields(fieldArrayRemoveByIndex(props.fields,index), props.updateType);
     }
 
     const onSortEnd = (moveProps: ArrayMoveProps) => {
@@ -16,17 +16,20 @@ const FieldsConfigurationForm = (props:IFieldsConfigurationFormProps) => {
             moveProps.oldIndex,
             moveProps.newIndex
           );
-            props.onUpdateFields(newFields, updateType)
+            props.onUpdateFields(newFields, props.updateType)
         }
       };
 
     return (
-        <div>
+        <div className="cont-vert width-100">
             <h2>
-                Fields Configuration
+                {props.title}
             </h2>
+            <p>
+                {props.description}
+            </p>
             <div className="cont-border">
-                <SortableFieldsList onSortEnd={onSortEnd} list={props.fields} onRemove={onRemove}/>
+                <SortableFieldsList showSize={props.showSize} onSortEnd={onSortEnd} list={props.fields} onRemove={onRemove}/>
             </div>
         </div>
     )
@@ -34,9 +37,11 @@ const FieldsConfigurationForm = (props:IFieldsConfigurationFormProps) => {
 
 interface IFieldsConfigurationFormProps {
     fields: Field[],
+    title: string,
+    description: string,
+    showSize: boolean,
+    updateType: string,
     onUpdateFields: (fields: Field[], type:string) => void
 }
-
-const updateType = 'Main'
 
 export { FieldsConfigurationForm }

@@ -16,7 +16,15 @@ INSERT INTO [dbo].[FieldsDBO]
            ,'Complete'
            ,'House Number'
            ,'Number'
-		   ,1)
+		   ,1),
+           
+           (0
+           ,0
+           ,'Complete'
+           ,'Small'
+           ,'Checked By Manager'
+           ,'Checklist'
+           ,0)
 GO
 
 

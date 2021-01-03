@@ -12,7 +12,7 @@ const SortableFieldsList = React.memo(
           <tr>
             <th>Label</th>
             <th>Type</th>
-            <th>Size</th>
+            {props.showSize && <th>Size</th>}
             <th>Mandatory Phase</th>
           </tr>
           {props.list.map((field) => {
@@ -22,6 +22,7 @@ const SortableFieldsList = React.memo(
                 key={key}
                 index={key}
                 id={key}
+                showSize={props.showSize}
                 onRemove={props.onRemove}
                 field={field}
               />
@@ -38,7 +39,7 @@ const SortableItem = SortableElement((props: ISortableItemProps) => {
     <tr className="grabbing" key={props.id}>
         <td className="noselect">{props.field.label}</td>
         <td className="noselect">{props.field.type}</td>
-        <td className="noselect">{props.field.size}</td>
+        {props.showSize && <td className="noselect">{props.field.size}</td>}
         <td className="noselect">{props.field.mandatoryPhase}</td>
         <td className="noselect">
           <button
@@ -56,12 +57,14 @@ const SortableItem = SortableElement((props: ISortableItemProps) => {
 
 interface ISortableListProps {
   list: Field[];
+  showSize: boolean;
   onRemove: (index: number) => void;
 }
 
 interface ISortableItemProps {
   field: Field;
   id: number;
+  showSize: boolean;
   onRemove: (id: number) => void;
 }
 

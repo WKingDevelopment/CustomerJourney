@@ -5,7 +5,6 @@ import { Field } from '../../../../data classes/Field';
 import { arrayComparer } from '../../../../general_Functions/array_Functions';
 import { isEmptyOrSpace } from '../../../../general_Functions/validations_Functions';
 import { AddNewFieldForm } from './AddNewFieldSubForm';
-import { ChecklistConfigurationForm } from './ChecklistConfigurationForm';
 import { FieldsConfigurationForm } from './FieldsConfigurationForm';
 
 const ItemConfigurationForm = () => {
@@ -68,11 +67,17 @@ const ItemConfigurationForm = () => {
                 <AddNewFieldForm phases={phasesConfig.phases.phaseList} onAddField={onAddField}/>
             </div>
             <div className="cont-horiz sa">
-                <FieldsConfigurationForm onUpdateFields={onUpdateFields} fields={mainFields}/>
-                <ChecklistConfigurationForm/>
+                <FieldsConfigurationForm updateType="Main" showSize={true} title={fieldTitle} description={fieldDesc} fields={mainFields} onUpdateFields={onUpdateFields}/>
+                <FieldsConfigurationForm updateType="Checklist" showSize={false} title={checklistTitle} description={checklistDesc} fields={checklistFields} onUpdateFields={onUpdateFields}/>
             </div>
         </div>
     )
 }
+
+const fieldTitle = 'Fields Configuration';
+const fieldDesc = 'This should describe fields';
+
+const checklistTitle = 'Fields Configuration';
+const checklistDesc = 'This should describe fields';
 
 export { ItemConfigurationForm }

@@ -15,6 +15,11 @@
     flex-direction: row;
 }
 
+.cont-vert {
+    display: flex;
+    flex-direction: column;
+}
+
 .cont-left {
     display: flex;
     justify-content: space-around;
@@ -30,10 +35,18 @@
     height: fit-content;
 }
 
+.width-50 {
+    width: 50%;
+}
+
 .width-75 {
     width: 75%;
 }
 
 .width-85 {
     width: 85%;
+}
+
+.width-100 {
+    width: 100%;
 }

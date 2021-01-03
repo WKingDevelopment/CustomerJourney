@@ -43,7 +43,7 @@ namespace CustomerJourney.Controllers
 
             foreach(Field f in fieldsDbo)
             {
-                if (f.type == "Boolean") { checklistFields.Add(f); } else { mainFields.Add(f); };
+                if (f.type == "Checklist") { checklistFields.Add(f); } else { mainFields.Add(f); };
             }
             return new Fields(mainFields.ToArray(), checklistFields.ToArray());
         }
