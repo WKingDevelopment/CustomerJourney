@@ -92,7 +92,7 @@ const PhasesConfigurationForm = () => {
           />
           <button onClick={addNewPhase}>Add Phase</button>
         </div>
-        <p>Drag and drop the phases below to suite your project's life-cycle</p>
+        <p>Drag and drop the phases below to suit your project's life-cycle</p>
         {phases && (
           <div className="small">
           <SortableList
