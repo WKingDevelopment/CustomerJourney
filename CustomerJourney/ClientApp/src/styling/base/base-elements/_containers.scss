@@ -6,10 +6,13 @@
     justify-content: space-between;
 }
 
+.baseline {
+    align-items: center;
+}
+
 .cont-horiz {
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 .cont-left {

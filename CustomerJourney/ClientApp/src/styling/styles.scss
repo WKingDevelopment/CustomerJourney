@@ -1,7 +1,12 @@
+// Colours
 $project-colour: DarkOrchid;
 $input-text: Indigo;
 $input-background: rgb(235, 235, 235);
 $freestanding-text: white;
+$dropdown-background: rgb(54, 53, 53);
+
+// Font Sizes
+$font-small: 1rem;
 
 @import './base/base';
 @import './base/base-elements/buttons';
