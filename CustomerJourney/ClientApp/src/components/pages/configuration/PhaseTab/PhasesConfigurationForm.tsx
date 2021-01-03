@@ -6,7 +6,7 @@ import { PhasesContext } from "../../../../contexts/phases-context";
 import { SessionContext } from "../../../../contexts/session-context";
 import { Phases } from "../../../../data classes/Phases";
 import { arrayComparer } from "../../../../general_Functions/array_Functions";
-import { SortableList } from "../../../shared components/SortableList";
+import { ArrayMoveProps, SortableList } from "../../../shared components/SortableList";
 
 const PhasesConfigurationForm = () => {
   const { session, sessionDispatch } = useContext(SessionContext);
@@ -19,6 +19,7 @@ const PhasesConfigurationForm = () => {
   const [savedPhases, setSavedPhases] = useState<Phases>(phasesConfig.phases);
 
   useEffect(() => {
+    setSavedPhases(phasesConfig.phases)
     setPhases(phasesConfig.phases)
   }, [JSON.stringify(phasesConfig.phases)]);
 
@@ -71,7 +72,7 @@ const PhasesConfigurationForm = () => {
 
   return (
     <div>
-      <div className="cont-horiz">
+      <div className="cont-horiz baseline">
         <h2>Phase Configuration</h2>
         {
           <button disabled={buttonDisabled} onClick={onSave}>
@@ -81,7 +82,7 @@ const PhasesConfigurationForm = () => {
       </div>
       <div className="cont-border">
           <h3>Add Phase</h3>
-          <div className="cont-horiz sa">
+          <div className="cont-horiz sa baseline">
           {error && <div className="input-Error">{error}</div>}
           <input
             type="text"
@@ -106,10 +107,5 @@ const PhasesConfigurationForm = () => {
     </div>
   );
 };
-
-interface ArrayMoveProps {
-  newIndex: number;
-  oldIndex: number;
-}
 
 export { PhasesConfigurationForm };
