@@ -23,8 +23,8 @@ const SortableList = React.memo(SortableContainer((props:ISortableListProps) => 
   const SortableItem = SortableElement((props:ISortableItemProps) => {
     return (
       <div className="cont-horiz sb grabbing">
-        <p>{props.label}</p>
-        {props.showRemove && <button className="button-X" onClick={() => {props.onRemove(props.id)}}>X</button>}
+          <p className="noselect">{props.label}</p>
+          {props.showRemove && <button className="button-X noselect" onClick={() => {props.onRemove(props.id)}}>X</button>}
       </div>
     )});
 
@@ -39,6 +39,11 @@ interface ISortableItemProps {
     showRemove: boolean,
     id: number,
     onRemove: (id:number) => void
+}
+
+export interface ArrayMoveProps {
+  newIndex: number;
+  oldIndex: number;
 }
 
   export { SortableList }

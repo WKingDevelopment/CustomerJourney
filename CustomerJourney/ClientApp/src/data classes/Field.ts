@@ -1,6 +1,6 @@
 import { isEmptyOrSpace } from "../general_Functions/validations_Functions";
 
-export { Field }
+export { Field, fieldArrayRemoveByIndex }
 class Field {
     constructor (public label: string, public mandatoryPhase: string, public type:string, public size:string) { }
 
@@ -31,4 +31,9 @@ class Field {
         return result;
     }
     //#endregion
+}
+
+const fieldArrayRemoveByIndex = (fields: Field[], index: number): Field[] => {
+   const clone = fields;
+   return clone.splice(index,1);;
 }

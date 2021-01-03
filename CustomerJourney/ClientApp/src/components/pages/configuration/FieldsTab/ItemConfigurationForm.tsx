@@ -10,18 +10,18 @@ import { FieldsConfigurationForm } from './FieldsConfigurationForm';
 
 const ItemConfigurationForm = () => {
     const [saveDisabled, setSaveDisabled] = useState<boolean>(true)
-    const { phasesConfig, phasesDispatch } = useContext(PhasesContext);
-    const { fieldsConfig, fieldsDispatch } = useContext(FieldsContext);
+    const { phasesConfig } = useContext(PhasesContext);
+    const { fieldsConfig } = useContext(FieldsContext);
     const [mainFields, setMainFields] = useState<Field[]>(fieldsConfig.fields.mainFields)
     const [checklistFields, setChecklistFields] = useState<Field[]>(fieldsConfig.fields.checklistFields)
     const [error, setError] = useState<string>('');
 
     useEffect(() => {
-        let same = arrayComparer(fieldsConfig.fields.mainFields,mainFields);
-        same = arrayComparer(fieldsConfig.fields.checklistFields,checklistFields);
-        if (!same && saveDisabled) {
+        const mainSame = arrayComparer(fieldsConfig.fields.mainFields,mainFields);
+        const checklistSame = arrayComparer(fieldsConfig.fields.checklistFields,checklistFields);
+        if ((!mainSame || !checklistSame) && saveDisabled) {
             setSaveDisabled(false);
-        } else if (same && !saveDisabled) {
+        } else if (mainSame && checklistSame && !saveDisabled) {
             setSaveDisabled(true);
         }
       }, [JSON.stringify(mainFields), JSON.stringify(checklistFields)]);
@@ -31,9 +31,7 @@ const ItemConfigurationForm = () => {
     }
 
     const onAddField = (newField:Field):boolean => {
-        console.log(1,newField)
         const fieldError = (newField.type === 'Checklist') ? newField.ValidityCheck(fieldsConfig.fields.checklistFields) : newField.ValidityCheck(fieldsConfig.fields.mainFields);
-        console.log(2,newField)
         if(isEmptyOrSpace(fieldError)) {
             if(newField.type === 'Checklist'){
                 setChecklistFields(checklistFields.concat([newField]));
@@ -57,7 +55,7 @@ const ItemConfigurationForm = () => {
 
     return (
         <div>
-            <div className="cont-horiz">
+            <div className="cont-horiz baseline">
                 <h2>Item Configuration</h2>
                 {
                 <button disabled={saveDisabled} onClick={onSave}>
@@ -69,8 +67,8 @@ const ItemConfigurationForm = () => {
                 {error && <div>{error}</div>}
                 <AddNewFieldForm phases={phasesConfig.phases.phaseList} onAddField={onAddField}/>
             </div>
-            <div>
-                <FieldsConfigurationForm onUpdateFields={onUpdateFields} fields={fieldsConfig.fields.mainFields}/>
+            <div className="cont-horiz sa">
+                <FieldsConfigurationForm onUpdateFields={onUpdateFields} fields={mainFields}/>
                 <ChecklistConfigurationForm/>
             </div>
         </div>

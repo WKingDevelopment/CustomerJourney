@@ -5,11 +5,6 @@ import { Field } from "../../data classes/Field";
 const SortableFieldsList = React.memo(
   SortableContainer((props: ISortableListProps) => {
     let key: number = -1;
-    const onRemove = (id: number): void => {
-      props.onRemove([]);
-    };
-
-    useEffect(() => {},[JSON.stringify(props.list)])
 
     return (
       <table>
@@ -27,7 +22,7 @@ const SortableFieldsList = React.memo(
                 key={key}
                 index={key}
                 id={key}
-                onRemove={onRemove}
+                onRemove={props.onRemove}
                 field={field}
               />
             );
@@ -40,34 +35,39 @@ const SortableFieldsList = React.memo(
 
 const SortableItem = SortableElement((props: ISortableItemProps) => {
   return (
-    <tr key={props.id}>
-      <td>{props.field.label}</td>
-      <td>{props.field.type}</td>
-      <td>{props.field.size}</td>
-      <td>{props.field.mandatoryPhase}</td>
-      <td>
-        <button
-          className="button-X"
-          onClick={() => {
-            props.onRemove(props.id);
-          }}
-        >
-          X
-        </button>
-      </td>
+    <tr className="grabbing" key={props.id}>
+        <td className="noselect">{props.field.label}</td>
+        <td className="noselect">{props.field.type}</td>
+        <td className="noselect">{props.field.size}</td>
+        <td className="noselect">{props.field.mandatoryPhase}</td>
+        <td className="noselect">
+          <button
+            className="button-X"
+            onClick={() => {
+              props.onRemove(props.id);
+            }}
+          >
+            X
+          </button>
+        </td>
     </tr>
   );
 });
 
 interface ISortableListProps {
   list: Field[];
-  onRemove: (result: string[]) => void;
+  onRemove: (index: number) => void;
 }
 
 interface ISortableItemProps {
   field: Field;
   id: number;
   onRemove: (id: number) => void;
+}
+
+export interface ArrayMoveProps {
+  newIndex: number;
+  oldIndex: number;
 }
 
 export { SortableFieldsList };
