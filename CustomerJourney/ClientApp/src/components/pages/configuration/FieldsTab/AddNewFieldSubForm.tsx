@@ -8,15 +8,17 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
     const [type, setType] = useState<string>(constants.fieldTypes[0])
     const [mandatoryPhase, setMandatoryPhase] = useState<string>(props.phases[0])
     const [size, setSize] = useState<string>(constants.fieldSizes[0]);
+    const [summary, setSummary] = useState<boolean>(false);
 
     const onAddField = (newField: Field) => {
         if(props.onAddField(newField)) {
-            setLabel('')
+            setLabel('');
+            setSummary(false);
         }   
     }
 
     return (
-        <div className="cont-left width-85">
+        <div className="cont-left width-88">
             <input className="input-small" value={label} onChange={(e) => { setLabel(e.target.value) }} />
             <div className="cont-horiz baseline">
                 <p>Data Type:</p>
@@ -30,7 +32,11 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
                 <p>mandatory Phase:</p>
                 {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={props.phases} value={mandatoryPhase} onChange={(e:any) => { setMandatoryPhase(e.value) }} />}
             </div>
-            <button className="button-large" value='Add' onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size))}}>Add</button>
+            <div className="cont-horiz baseline">
+                <p>Summary:</p>
+                {<input className="checkbox" type="checkbox" checked={summary} onChange={(e:any) => { setSummary(e.value) }} />}
+            </div>
+            <button className="button-large" value='Add' onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size, summary))}}>Add</button>
         </div>
     )
 }
