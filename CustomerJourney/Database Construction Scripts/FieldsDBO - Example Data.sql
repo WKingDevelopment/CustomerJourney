@@ -19,9 +19,9 @@ INSERT INTO [dbo].[FieldsDBO]
 		   ,1),
            
            (0
+		   ,'Small'
            ,0
            ,'Complete'
-           ,'Small'
            ,'Checked By Manager'
            ,'Checklist'
            ,0)

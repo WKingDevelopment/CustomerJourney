@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CustomerJourney.Models_Client
 {
-    public class Fields
+    public class Fields : Session
     {
         public Field[] mainFields;
         public Field[] checklistFields;

@@ -3,7 +3,7 @@ const constants = {
         phases: 'Phases',
         item: 'Item'
     },
-    fieldTypes: ['Text', 'Number', 'Boolean', 'DateTime'],
+    fieldTypes: ['Text', 'Number', 'Checklist', 'DateTime'],
     fieldSizes: ['Small', 'Medium', 'Large'],
     disabledPhases: ['Unphased','Complete']
 }

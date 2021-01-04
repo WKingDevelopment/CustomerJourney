@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { arrayMove } from "react-sortable-hoc";
-import { apiGetPhases, apiPutPhases } from "../../../../apiCalls/phases";
+import { apiPutPhases } from "../../../../apiCalls/phases";
 import { constants } from "../../../../constants/constants";
 import { PhasesContext } from "../../../../contexts/phases-context";
 import { SessionContext } from "../../../../contexts/session-context";
@@ -9,8 +9,8 @@ import { arrayComparer } from "../../../../general_Functions/array_Functions";
 import { ArrayMoveProps, SortableList } from "../../../shared components/SortableList";
 
 const PhasesConfigurationForm = () => {
-  const { session, sessionDispatch } = useContext(SessionContext);
-  const { phasesConfig, phasesDispatch } = useContext(PhasesContext);
+  const { session } = useContext(SessionContext);
+  const { phasesConfig } = useContext(PhasesContext);
 
   const [newPhaseLabel, setNewPhaseLabel] = useState<string>("");
   const [error, setError] = useState<string>("");

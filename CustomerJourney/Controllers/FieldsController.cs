@@ -48,37 +48,31 @@ namespace CustomerJourney.Controllers
             return new Fields(mainFields.ToArray(), checklistFields.ToArray());
         }
 
-        //// PUT: api/Fields/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutField(int id, Field fieldsDbo)
-        //{
-        //    if (id != fieldsDbo.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/Fields/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutField(int id, Fields fields)
+        {
+            if (id != fields.companyId)
+            {
+                return BadRequest();
+            }
 
-        //    _context.Entry(fieldsDbo).State = EntityState.Modified;
+            try
+            {
+                _context.FieldsDBOs.RemoveRange(GetFields(id).Result);
+                FieldsDBO[] fieldsDBOs = CombineFieldArrays(ConvertFieldArrays(fields.mainFields), ConvertFieldArrays(fields.checklistFields));
+                _context.FieldsDBOs.AddRange(fieldsDBOs);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!FieldsDboExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+            return Problem();
+        }
 
         //// POST: api/Fields
         //// To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -110,7 +104,31 @@ namespace CustomerJourney.Controllers
 
         //private bool FieldsDboExists(int id)
         //{
-        //    return _context.FieldsDbos.Any(e => e.Id == id);
+        //    return _context.Fields.Any(e => e.Id == id);
         //}
+
+        private async Task<FieldsDBO[]> GetFields(int id)
+        {
+            FieldsDBO[] fieldsDbo = await _context.FieldsDBOs.Where(f => f.companyId == id).OrderBy(r => r.seq).ToArrayAsync();
+            return fieldsDbo;
+        }
+
+        private List<FieldsDBO> ConvertFieldArrays(Field[] fields)
+        {
+            List<FieldsDBO> fieldDBOs = new List<FieldsDBO>();
+            for(int i = 0; i < fields.Length; i++)
+            {
+                FieldsDBO field = fields[i].ConvertToDbo();
+                field.seq = i;
+                fieldDBOs.Add(field);
+            }
+            return fieldDBOs;
+        }
+
+        private FieldsDBO[] CombineFieldArrays(List<FieldsDBO> list1, List<FieldsDBO> list2)
+        {
+            list1.AddRange(list2);
+            return list1.ToArray();
+        }
     }
 }

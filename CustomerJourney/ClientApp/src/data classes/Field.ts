@@ -2,7 +2,7 @@ import { isEmptyOrSpace } from "../general_Functions/validations_Functions";
 
 export { Field, fieldArrayRemoveByIndex }
 class Field {
-    constructor (public label: string, public mandatoryPhase: string, public type:string, public size:string) { }
+    constructor (public label: string, public mandatoryPhase: string, public type:string, public size:string, public summary: boolean) { }
 
     //#region Public Methods
     public ValidityCheck = (fields:Field[]):string => {

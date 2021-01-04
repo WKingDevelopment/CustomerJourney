@@ -1,14 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { apiPutFields } from '../../../../apiCalls/Fields';
 import { FieldsContext } from '../../../../contexts/fields-context';
 import { PhasesContext } from '../../../../contexts/phases-context';
+import { SessionContext } from '../../../../contexts/session-context';
 import { Field } from '../../../../data classes/Field';
+import { Fields } from '../../../../data classes/Fields';
 import { arrayComparer } from '../../../../general_Functions/array_Functions';
 import { isEmptyOrSpace } from '../../../../general_Functions/validations_Functions';
 import { AddNewFieldForm } from './AddNewFieldSubForm';
 import { FieldsConfigurationForm } from './FieldsConfigurationForm';
 
 const ItemConfigurationForm = () => {
-    const [saveDisabled, setSaveDisabled] = useState<boolean>(true)
+    const [saveDisabled, setSaveDisabled] = useState<boolean>(true);
+    const { session } = useContext(SessionContext);
     const { phasesConfig } = useContext(PhasesContext);
     const { fieldsConfig } = useContext(FieldsContext);
     const [mainFields, setMainFields] = useState<Field[]>(fieldsConfig.fields.mainFields)
@@ -26,7 +30,13 @@ const ItemConfigurationForm = () => {
       }, [JSON.stringify(mainFields), JSON.stringify(checklistFields)]);
 
     const onSave = () => {
-
+        async function saveFields() {
+            const response = await apiPutFields(new Fields(mainFields,checklistFields), session.session);
+            if (response) {
+              console.log('Fields Response',response)
+            }
+          }
+          saveFields();
     }
 
     const onAddField = (newField:Field):boolean => {

@@ -4,8 +4,8 @@ import { putRequest } from "../general_Functions/api_Functions"
 
 export { apiPutFields, apiGetFields }
 
-async function apiPutFields(phases:Fields, session:Session) {
-    return await putRequest(phases,model,session,true,false).then(data => {return data })
+async function apiPutFields(fields:Fields, session:Session) {
+    return await putRequest(fields,model,session,true,false).then(data => {return data })
 }
 
 async function apiGetFields (session:Session) {
