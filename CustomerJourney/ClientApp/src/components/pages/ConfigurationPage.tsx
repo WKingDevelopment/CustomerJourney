@@ -4,7 +4,7 @@ import { ConfigurationTabs } from './configuration/ConfigurationTabs';
 const ConfigurationPage = () => {
     return (
         <div>
-        <h1>Project Configuration</h1>
+        <h2>Project Configuration</h2>
             <ConfigurationTabs/>
         </div>
         )

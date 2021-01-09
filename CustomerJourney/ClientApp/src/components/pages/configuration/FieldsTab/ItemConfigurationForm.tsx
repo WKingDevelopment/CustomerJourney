@@ -65,7 +65,7 @@ const ItemConfigurationForm = () => {
     return (
         <div>
             <div className="cont-horiz baseline">
-                <h2>Item Configuration</h2>
+                <h3>Item Configuration</h3>
                 {
                 <button disabled={saveDisabled} onClick={onSave}>
                     Save
@@ -85,9 +85,9 @@ const ItemConfigurationForm = () => {
 }
 
 const fieldTitle = 'Fields Configuration';
-const fieldDesc = 'This should describe fields';
+const fieldDesc = 'These fields present on the item.';
 
-const checklistTitle = 'Fields Configuration';
+const checklistTitle = 'Checklist Configuration';
 const checklistDesc = 'This should describe fields';
 
 export { ItemConfigurationForm }

@@ -3,8 +3,7 @@
     border: 0.15rem solid $project-colour;
     border-radius: 0.5rem 0.5rem;
     color: $freestanding-text;
-    width:fit-content;
-    height: fit-content;
+    overflow: hidden;
     padding: 0.25rem 0.75rem 0.25rem 0.75rem;
     margin: 0.25rem;
 }

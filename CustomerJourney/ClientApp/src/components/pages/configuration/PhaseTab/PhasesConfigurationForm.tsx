@@ -80,7 +80,7 @@ const PhasesConfigurationForm = () => {
           </button>
         }
       </div>
-      <div className="cont-border">
+      <div className="cont-border width-35">
           <h3>Add Phase</h3>
           <div className="cont-horiz sa baseline">
           {error && <div className="input-Error">{error}</div>}
