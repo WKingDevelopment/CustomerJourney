@@ -18,25 +18,25 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
     }
 
     return (
-        <div className="cont-left width-88 sb mrgn-btm">
+        <div className="cont-left width-77 sb mrgn-btm">
             <input className="input-small" value={label} onChange={(e) => { setLabel(e.target.value) }} />
-            <div className="cont-horiz baseline centre width-15">
+            <div className="cont-horiz baseline centre ">
                 <p>Data Type:</p>
                 <Dropdown className="dropdown"  placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldTypes} value={type} onChange={(e:any) => { setType(e.value) }} />
             </div>
-            <div className="cont-horiz baseline centre width-15">
+            <div className="cont-horiz baseline centre ">
                 <p>Size:</p>
                 {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldSizes} value={size} onChange={(e:any) => {setSize(e.value)}}/>}
             </div>
-            <div className="cont-horiz baseline centre width-15">
+            <div className="cont-horiz baseline centre ">
                 <p>Mandatory Phase:</p>
                 {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={props.phases} value={mandatoryPhase} onChange={(e:any) => { setMandatoryPhase(e.value) }} />}
             </div>
-            <div className="cont-horiz baseline centre width-15">
+            <div className="cont-horiz baseline centre ">
                 <p>Summary:</p>
                 <button className={summary ? 'button-Y grabbing noselect' : 'button-N grabbing noselect'}onClick={() => {setSummary(!summary)}}>{summary ? 'Yes':'No'}</button>
             </div>
-            <div className="cont-horiz baseline centre width-15">
+            <div className="cont-horiz baseline centre ">
                 <button className="button-large" onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size, summary))}}>Add</button>
             </div>
             
