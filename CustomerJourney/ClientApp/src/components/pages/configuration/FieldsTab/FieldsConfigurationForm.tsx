@@ -21,7 +21,7 @@ const FieldsConfigurationForm = (props:IFieldsConfigurationFormProps) => {
       };
 
     return (
-        <div className="cont-vert border width-100">
+        <div className="cont-vert width-100">
             <h3>
                 {props.title}
             </h3>

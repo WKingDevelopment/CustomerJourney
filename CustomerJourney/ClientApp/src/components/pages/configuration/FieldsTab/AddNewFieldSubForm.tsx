@@ -18,25 +18,28 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
     }
 
     return (
-        <div className="cont-left width-88">
+        <div className="cont-left width-88 sb mrgn-btm">
             <input className="input-small" value={label} onChange={(e) => { setLabel(e.target.value) }} />
-            <div className="cont-horiz baseline">
+            <div className="cont-horiz baseline centre width-15">
                 <p>Data Type:</p>
                 <Dropdown className="dropdown"  placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldTypes} value={type} onChange={(e:any) => { setType(e.value) }} />
             </div>
-            <div className="cont-horiz baseline">
+            <div className="cont-horiz baseline centre width-15">
                 <p>Size:</p>
                 {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldSizes} value={size} onChange={(e:any) => {setSize(e.value)}}/>}
             </div>
-            <div className="cont-horiz baseline">
-                <p>mandatory Phase:</p>
+            <div className="cont-horiz baseline centre width-15">
+                <p>Mandatory Phase:</p>
                 {<Dropdown className="dropdown" placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={props.phases} value={mandatoryPhase} onChange={(e:any) => { setMandatoryPhase(e.value) }} />}
             </div>
-            <div className="cont-horiz baseline">
+            <div className="cont-horiz baseline centre width-15">
                 <p>Summary:</p>
-                {<input className="checkbox" type="checkbox" checked={summary} onChange={(e:any) => { setSummary(e.value) }} />}
+                <button className={summary ? 'button-Y grabbing noselect' : 'button-N grabbing noselect'}onClick={() => {setSummary(!summary)}}>{summary ? 'Yes':'No'}</button>
             </div>
-            <button className="button-large" value='Add' onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size, summary))}}>Add</button>
+            <div className="cont-horiz baseline centre width-15">
+                <button className="button-large" onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size, summary))}}>Add</button>
+            </div>
+            
         </div>
     )
 }

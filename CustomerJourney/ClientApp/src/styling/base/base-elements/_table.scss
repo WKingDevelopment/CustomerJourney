@@ -1,8 +1,13 @@
 th {
-    margin: 2rem 2rem 2rem 2rem;
+    margin: 1rem 1rem 1rem 1rem;
     font-size: $font-small;
 }
 
 table {
     width: 100%;
+}
+
+tr {
+    display: flex;
+    justify-content: space-around;
 }
