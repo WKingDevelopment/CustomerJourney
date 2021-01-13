@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { apiPutFields } from '../../../../apiCalls/Fields';
+import { reducerConstants } from '../../../../constants/reducer-Constants';
 import { FieldsContext } from '../../../../contexts/fields-context';
 import { PhasesContext } from '../../../../contexts/phases-context';
 import { SessionContext } from '../../../../contexts/session-context';
@@ -14,7 +15,7 @@ const ItemConfigurationForm = () => {
     const [saveDisabled, setSaveDisabled] = useState<boolean>(true);
     const { session } = useContext(SessionContext);
     const { phasesConfig } = useContext(PhasesContext);
-    const { fieldsConfig } = useContext(FieldsContext);
+    const { fieldsConfig, fieldsDispatch } = useContext(FieldsContext);
     const [mainFields, setMainFields] = useState<Field[]>(fieldsConfig.fields.mainFields)
     const [checklistFields, setChecklistFields] = useState<Field[]>(fieldsConfig.fields.checklistFields)
     const [error, setError] = useState<string>('');
@@ -27,13 +28,14 @@ const ItemConfigurationForm = () => {
         } else if (mainSame && checklistSame && !saveDisabled) {
             setSaveDisabled(true);
         }
-      }, [JSON.stringify(mainFields), JSON.stringify(checklistFields)]);
+      }, [JSON.stringify(mainFields), JSON.stringify(checklistFields), JSON.stringify(fieldsConfig.fields)]);
 
     const onSave = () => {
         async function saveFields() {
             const response = await apiPutFields(new Fields(mainFields,checklistFields), session.session);
             if (response) {
-              console.log('Fields Response',response)
+                setError('Successfully saved to database.');
+                fieldsDispatch({type:reducerConstants.setFields,fields:new Fields(mainFields,checklistFields)})
             }
           }
           saveFields();
@@ -62,6 +64,7 @@ const ItemConfigurationForm = () => {
         }
     }
 
+    console.log('Rerendered')
     return (
         <div>
             <div className="cont-horiz baseline">

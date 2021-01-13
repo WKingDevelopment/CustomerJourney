@@ -50,6 +50,8 @@ const PhasesConfigurationForm = () => {
       const response = await apiPutPhases(phases, session.session);
       if (response) {
         setSavedPhases(phases);
+      } else {
+        setError('There was an error saving the phase configuration.')
       }
     }
     savePhases();

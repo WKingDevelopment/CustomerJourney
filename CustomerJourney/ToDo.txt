@@ -9,3 +9,6 @@ Fields
 
 Configuration Page
 - Hover over words, description appears
+
+All Pages
+- Make Error into a class with an 'Empty' getter, isError property for the class to change the colour of the Error for if save is successful. And a file of constant error for ease of use.

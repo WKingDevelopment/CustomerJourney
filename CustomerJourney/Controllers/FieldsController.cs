@@ -52,26 +52,27 @@ namespace CustomerJourney.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutField(int id, Fields fields)
+        public async Task<ActionResult<bool>> PutField(int id, Fields fields)
         {
             if (id != fields.companyId)
             {
-                return BadRequest();
+                return false;
             }
 
             try
             {
                 _context.FieldsDBOs.RemoveRange(GetFields(id).Result);
+                _context.SaveChanges();
                 FieldsDBO[] fieldsDBOs = CombineFieldArrays(ConvertFieldArrays(fields.mainFields), ConvertFieldArrays(fields.checklistFields));
                 _context.FieldsDBOs.AddRange(fieldsDBOs);
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return false;
             }
 
-            return Problem();
+            return true;
         }
 
         //// POST: api/Fields
