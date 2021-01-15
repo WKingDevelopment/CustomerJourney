@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { arrayMove } from "react-sortable-hoc";
 import { apiPutPhases } from "../../../../apiCalls/phases";
 import { constants } from "../../../../constants/constants";
+import { reducerConstants } from "../../../../constants/reducer-Constants";
 import { PhasesContext } from "../../../../contexts/phases-context";
 import { SessionContext } from "../../../../contexts/session-context";
 import { Phases } from "../../../../data classes/Phases";
@@ -10,7 +11,7 @@ import { ArrayMoveProps, SortableList } from "../../../shared components/Sortabl
 
 const PhasesConfigurationForm = () => {
   const { session } = useContext(SessionContext);
-  const { phasesConfig } = useContext(PhasesContext);
+  const { phasesConfig, phasesDispatch } = useContext(PhasesContext);
 
   const [newPhaseLabel, setNewPhaseLabel] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -49,7 +50,7 @@ const PhasesConfigurationForm = () => {
     async function savePhases() {
       const response = await apiPutPhases(phases, session.session);
       if (response) {
-        setSavedPhases(phases);
+        phasesDispatch({type:reducerConstants.setPhases, phases:phases})
       } else {
         setError('There was an error saving the phase configuration.')
       }

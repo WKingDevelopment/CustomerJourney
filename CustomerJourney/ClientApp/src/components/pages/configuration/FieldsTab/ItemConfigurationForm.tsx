@@ -79,7 +79,7 @@ const ItemConfigurationForm = () => {
                 {error && <div>{error}</div>}
                 <AddNewFieldForm phases={phasesConfig.phases.phaseList} onAddField={onAddField}/>
             </div>
-            <div className="cont-horiz sa">
+            <div className="cont-horiz">
                 <FieldsConfigurationForm updateType="Main" showSize={true} title={fieldTitle} description={fieldDesc} fields={mainFields} onUpdateFields={onUpdateFields}/>
                 <FieldsConfigurationForm updateType="Checklist" showSize={false} title={checklistTitle} description={checklistDesc} fields={checklistFields} onUpdateFields={onUpdateFields}/>
             </div>
