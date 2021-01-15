@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { arrayMove } from "react-sortable-hoc";
 import { Field, fieldArrayRemoveByIndex } from "../../../../data classes/Field";
 import {

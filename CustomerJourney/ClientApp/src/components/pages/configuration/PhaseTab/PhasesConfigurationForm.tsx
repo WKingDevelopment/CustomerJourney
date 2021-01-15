@@ -75,8 +75,8 @@ const PhasesConfigurationForm = () => {
 
   return (
     <div>
-      <div className="cont-horiz baseline">
-        <h2>Phase Configuration</h2>
+      <div className="cont-horiz baseline mrgn-btm">
+        <h4>Phase Configuration</h4>
         {
           <button disabled={buttonDisabled} onClick={onSave}>
             Save
@@ -84,7 +84,7 @@ const PhasesConfigurationForm = () => {
         }
       </div>
       <div className="cont-border width-35">
-          <h3>Add Phase</h3>
+          <h5>Add Phase</h5>
           <div className="cont-horiz sa baseline">
           {error && <div className="input-Error">{error}</div>}
           <input

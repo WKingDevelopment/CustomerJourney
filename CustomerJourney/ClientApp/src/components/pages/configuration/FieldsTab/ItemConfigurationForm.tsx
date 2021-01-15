@@ -64,10 +64,9 @@ const ItemConfigurationForm = () => {
         }
     }
 
-    console.log('Rerendered')
     return (
         <div>
-            <div className="cont-horiz baseline">
+            <div className="cont-horiz baseline mrgn-btm">
                 <h3>Item Configuration</h3>
                 {
                 <button disabled={saveDisabled} onClick={onSave}>

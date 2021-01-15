@@ -7,3 +7,8 @@ table {
     text-align: center;
     width: 100%;
 }
+
+tr {
+    display: flex;
+    justify-content: space-around;
+}

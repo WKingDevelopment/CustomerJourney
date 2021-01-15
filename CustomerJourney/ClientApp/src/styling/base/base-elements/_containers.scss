@@ -15,6 +15,10 @@
     flex-direction: row;
 }
 
+.centre {
+    justify-content: center;
+}
+
 .cont-vert {
     display: flex;
     flex-direction: column;
@@ -24,7 +28,7 @@
 .cont-left {
     display: flex;
     justify-content: space-around;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
 }
 
 .center {
@@ -40,6 +44,14 @@
     padding: 1rem;
 }
 
+.mrgn-btm {
+    margin-bottom: 0.75rem;
+}
+
+.width-15 {
+    width: 15%;
+}
+
 .width-35 {
     width:35%;
 }
@@ -52,8 +64,8 @@
     width: 75%;
 }
 
-.width-88 {
-    width: 88%;
+.width-77 {
+    width: 77%;
 }
 
 .width-100 {

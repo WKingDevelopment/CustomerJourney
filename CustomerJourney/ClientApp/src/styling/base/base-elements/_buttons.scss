@@ -4,9 +4,12 @@
     border-radius: 0.5rem 0.5rem;
     color: $freestanding-text;
     overflow: hidden;
-    padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+    padding: 0.25rem 1rem 0.25rem 1rem;
     margin: 0.25rem;
+    height:fit-content;
 }
+
+button:focus { outline: none; }
 
 button:disabled {
     background-color: rgb(89, 30, 119);
@@ -23,7 +26,20 @@ button:disabled {
     margin-right: 1rem;
 }
 
-.button-large {
-    font-size: 1rem;
-    margin-top: 0.55rem;
+.button-Y {
+    background-color: transparent;
+    border: 0.15rem solid rgb(0, 179, 9);
+    border-radius: 0.5rem 0.5rem;
+    color:  rgb(0, 179, 9);
+    height: fit-content;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+}
+
+.button-N {
+    background-color: transparent;
+    border: 0.15rem solid rgb(219, 0, 0);
+    border-radius: 0.5rem 0.5rem;
+    color: rgb(214, 48, 48);
+    height: fit-content;
+    padding: 0.25rem 1rem 0.25rem 1rem;
 }
