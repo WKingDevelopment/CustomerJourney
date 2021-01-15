@@ -66,8 +66,8 @@ const ItemConfigurationForm = () => {
 
     return (
         <div>
-            <div className="cont-horiz baseline mrgn-btm">
-                <h3>Item Configuration</h3>
+            <div className="cont-horiz vert-center mrgn-btm sb width-20">
+                <h4>Item Configuration</h4>
                 {
                 <button disabled={saveDisabled} onClick={onSave}>
                     Save
@@ -78,7 +78,7 @@ const ItemConfigurationForm = () => {
                 {error && <div>{error}</div>}
                 <AddNewFieldForm phases={phasesConfig.phases.phaseList} onAddField={onAddField}/>
             </div>
-            <div className="cont-horiz">
+            <div className="cont-horiz top">
                 <FieldsConfigurationForm updateType="Main" showSize={true} title={fieldTitle} description={fieldDesc} fields={mainFields} onUpdateFields={onUpdateFields}/>
                 <FieldsConfigurationForm updateType="Checklist" showSize={false} title={checklistTitle} description={checklistDesc} fields={checklistFields} onUpdateFields={onUpdateFields}/>
             </div>

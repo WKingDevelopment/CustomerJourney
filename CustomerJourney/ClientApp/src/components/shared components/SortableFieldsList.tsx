@@ -8,15 +8,17 @@ const SortableFieldsList = React.memo(
 
     return (
       <table className="mrgn-btm">
-        <tbody>
+        <thead>
           <tr>
             <th>Label</th>
             <th>Type</th>
             {props.showSize && <th>Size</th>}
-            <th>Summary</th>
             <th>Mandatory Phase</th>
-            <th/>
+            <th>Summary</th>
+            <th>Remove</th>
           </tr>
+          </thead>
+          <tbody>
           {props.list.map((field) => {
             key += 1;
             return (
@@ -43,7 +45,7 @@ const SortableItem = SortableElement((props: ISortableItemProps) => {
         <td className="noselect">{props.field.type}</td>
         {props.showSize && <td className="noselect">{props.field.size}</td>}
         <td className="noselect">{props.field.mandatoryPhase}</td>
-        <td className={props.field.summary? "noselect button-Y" : "noselect button-X"}>{props.field.summary? 'Yes' : 'No'}</td>
+        <td> {props.field.summary ? <div className="noselect button-Y">Yes</div> : <div className="noselect button-N">No</div>}</td>
         <td className="noselect">
           <button
             className="button-X"

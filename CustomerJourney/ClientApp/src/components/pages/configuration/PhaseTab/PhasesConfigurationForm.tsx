@@ -75,7 +75,7 @@ const PhasesConfigurationForm = () => {
 
   return (
     <div>
-      <div className="cont-horiz baseline mrgn-btm">
+      <div className="cont-horiz vert-center mrgn-btm sb width-20">
         <h4>Phase Configuration</h4>
         {
           <button disabled={buttonDisabled} onClick={onSave}>

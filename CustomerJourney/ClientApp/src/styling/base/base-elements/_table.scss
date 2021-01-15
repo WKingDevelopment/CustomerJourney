@@ -1,14 +1,17 @@
-th {
-    font-size: $font-small;
-    margin: 2rem 2rem 2rem 2rem;
-}
-
 table {
+    border-collapse: collapse;
+    table-layout: fixed;
     text-align: center;
-    width: 100%;
 }
 
-tr {
-    display: flex;
-    justify-content: space-around;
+table thead tr {
+    text-align: center;
+}
+
+th {
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+td {
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }

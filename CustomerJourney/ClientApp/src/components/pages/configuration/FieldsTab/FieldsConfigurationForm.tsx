@@ -26,11 +26,11 @@ const FieldsConfigurationForm = (props: IFieldsConfigurationFormProps) => {
   };
 
   return (
-    <div className="cont-vert width-100">
+    <div className="cont-vert center width-100">
         <h3>{props.title}</h3>
         <p>{props.description}</p>
 
-        <div className="cont-border width-75">
+        <div className="cont-border">
           <SortableFieldsList
             showSize={props.showSize}
             onSortEnd={onSortEnd}

@@ -18,7 +18,7 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
     }
 
     return (
-        <div className="cont-left width-77 sb mrgn-btm">
+        <div className="cont-left width-88 baseline sb">
             <input className="input-small" value={label} onChange={(e) => { setLabel(e.target.value) }} />
             <div className="cont-horiz baseline centre ">
                 <p>Data Type:</p>
