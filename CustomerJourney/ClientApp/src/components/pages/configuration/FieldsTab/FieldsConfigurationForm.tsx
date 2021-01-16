@@ -28,7 +28,6 @@ const FieldsConfigurationForm = (props: IFieldsConfigurationFormProps) => {
   return (
     <div className="cont-vert center width-100">
         <h3>{props.title}</h3>
-        <p>{props.description}</p>
 
         <div className="cont-border">
           <SortableFieldsList
@@ -45,7 +44,6 @@ const FieldsConfigurationForm = (props: IFieldsConfigurationFormProps) => {
 interface IFieldsConfigurationFormProps {
   fields: Field[];
   title: string;
-  description: string;
   showSize: boolean;
   updateType: string;
   onUpdateFields: (fields: Field[], type: string) => void;

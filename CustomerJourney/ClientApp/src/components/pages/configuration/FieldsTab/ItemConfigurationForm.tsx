@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Alert } from '../../../../data classes/Alert';
 import { apiPutFields } from '../../../../apiCalls/Fields';
 import { reducerConstants } from '../../../../constants/reducer-Constants';
 import { FieldsContext } from '../../../../contexts/fields-context';
@@ -18,7 +19,7 @@ const ItemConfigurationForm = () => {
     const { fieldsConfig, fieldsDispatch } = useContext(FieldsContext);
     const [mainFields, setMainFields] = useState<Field[]>(fieldsConfig.fields.mainFields)
     const [checklistFields, setChecklistFields] = useState<Field[]>(fieldsConfig.fields.checklistFields)
-    const [error, setError] = useState<string>('');
+    const [alert, setAlert] = useState<Alert>(new Alert('',false));
 
     useEffect(() => {
         const mainSame = arrayComparer(fieldsConfig.fields.mainFields,mainFields);
@@ -34,7 +35,7 @@ const ItemConfigurationForm = () => {
         async function saveFields() {
             const response = await apiPutFields(new Fields(mainFields,checklistFields), session.session);
             if (response) {
-                setError('Successfully saved to database.');
+                setAlert(new Alert('Successfully saved to database.', false));
                 fieldsDispatch({type:reducerConstants.setFields,fields:new Fields(mainFields,checklistFields)})
             }
           }
@@ -51,7 +52,7 @@ const ItemConfigurationForm = () => {
             }
             return true
         } else {
-            setError(fieldError);
+            setAlert(new Alert(fieldError, true));
             return false;
         }
     }
@@ -66,30 +67,28 @@ const ItemConfigurationForm = () => {
 
     return (
         <div>
-            <div className="cont-horiz vert-center mrgn-btm sb width-20">
-                <h4>Item Configuration</h4>
-                {
-                <button disabled={saveDisabled} onClick={onSave}>
-                    Save
-                </button>
-                }
+            <div className="cont-horiz vert-center">
+                <div className="cont-horiz vert-center mrgn-btm sb width-35">
+                    <h4>Project Configuration / Item Configuration</h4>
+                    <button disabled={saveDisabled} onClick={onSave}>
+                        Save
+                    </button>
+                </div>
+                {alert.text && <div onClick={() => {setAlert(new Alert('',false))}} className={alert.red ? "mrgn-left button-N width-max click mrgn-btm" : "mrgn-left button-Y click width-max mrgn-btm"}>{alert.text}</div>}
             </div>
             <div>
-                {error && <div>{error}</div>}
                 <AddNewFieldForm phases={phasesConfig.phases.phaseList} onAddField={onAddField}/>
             </div>
             <div className="cont-horiz top">
-                <FieldsConfigurationForm updateType="Main" showSize={true} title={fieldTitle} description={fieldDesc} fields={mainFields} onUpdateFields={onUpdateFields}/>
-                <FieldsConfigurationForm updateType="Checklist" showSize={false} title={checklistTitle} description={checklistDesc} fields={checklistFields} onUpdateFields={onUpdateFields}/>
+                <FieldsConfigurationForm updateType="Main" showSize={true} title={fieldTitle} fields={mainFields} onUpdateFields={onUpdateFields}/>
+                <FieldsConfigurationForm updateType="Checklist" showSize={false} title={checklistTitle} fields={checklistFields} onUpdateFields={onUpdateFields}/>
             </div>
         </div>
     )
 }
 
 const fieldTitle = 'Fields Configuration';
-const fieldDesc = 'These fields present on the item.';
 
 const checklistTitle = 'Checklist Configuration';
-const checklistDesc = 'This should describe fields';
 
 export { ItemConfigurationForm }

@@ -14,7 +14,7 @@ class Field {
         } else if(isEmptyOrSpace(this.size)) {
             error = 'Field size cannot be empty.';
         } else if(this.labelInList(fields)) {
-            error = 'Field already exists';
+            error = `Field ${this.label} already exists`;
         }
         return error 
     }
