@@ -19,7 +19,7 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
 
     return (
         <div className="cont-left width-88 baseline sb">
-            <input className="input-small" value={label} onChange={(e) => { setLabel(e.target.value) }} />
+            <input type="text" className="input-small" value={label} maxLength={20} onChange={(e) => { setLabel(e.target.value) }} />
             <div className="cont-horiz baseline centre ">
                 <p>Data Type:</p>
                 <Dropdown className="dropdown"  placeholderClassName="dropdown-placeholder" menuClassName="dropdown-menus sa" options={constants.fieldTypes} value={type} onChange={(e:any) => { setType(e.value) }} />
