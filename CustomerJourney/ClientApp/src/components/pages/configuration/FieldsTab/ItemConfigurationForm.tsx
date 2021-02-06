@@ -59,6 +59,7 @@ const ItemConfigurationForm = () => {
 
     const onUpdateFields = (fields:Field[], type:string) => {
         if (type === 'Main') {
+            console.log('Fields', fields)
             setMainFields(fields)
         } else {
             setChecklistFields(fields)

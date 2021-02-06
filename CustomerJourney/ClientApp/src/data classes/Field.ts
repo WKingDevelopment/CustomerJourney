@@ -34,6 +34,11 @@ class Field {
 }
 
 const fieldArrayRemoveByIndex = (fields: Field[], index: number): Field[] => {
-   const clone = fields;
-   return clone.splice(index,1);;
+   let res:Field[] = [];
+   for(let i=0;i<fields.length;i++) {
+       if(i !== index) {
+        res = res.concat(fields[i])
+       }
+   }
+   return res;
 }
