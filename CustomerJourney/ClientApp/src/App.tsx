@@ -1,8 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
-import { Route } from 'react-router';
 import { apiGetFields } from './apiCalls/Fields';
-import { apiGetPhases } from './apiCalls/phases';
-import { ConfigurationPage } from './components/pages/ConfigurationPage';
+import { apiGetPhases } from './apiCalls/phases'; 
 import { reducerConstants } from './constants/reducer-Constants';
 import { FieldsContext, InitialFieldsType } from './contexts/fields-context';
 import { InitialPhasesType, PhasesContext } from './contexts/phases-context';
@@ -13,8 +11,11 @@ import { Session } from './data classes/Session';
 import { fieldsReducer } from './reducers/fields-Reducer';
 import { phasesReducer } from './reducers/phases-Reducer';
 import { sessionReducer } from './reducers/session-Reducer';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './styling/styles.scss'
+import { LifeCyclePage } from './components/pages/LifeCyclePage';
+import { ConfigurationPage } from './components/pages/ConfigurationPage';
 
 export const App = () => {
   const initSession: InitialSessionType = { session: new Session() };
@@ -37,12 +38,17 @@ export const App = () => {
       }, []);
 
   return (
-    <PhasesContext.Provider value={{phasesConfig, phasesDispatch}}>
+    <Router>
+      <Switch>
+      <PhasesContext.Provider value={{phasesConfig, phasesDispatch}}>
       <SessionContext.Provider value={{session, sessionDispatch}}>
         <FieldsContext.Provider value={{fieldsConfig, fieldsDispatch}}>
-          <Route exact path='/' component={ConfigurationPage} />
+          <Route exact path='/' component={LifeCyclePage} />
+          <Route exact path='/Configuration' component={ConfigurationPage}/>
         </FieldsContext.Provider>
       </SessionContext.Provider>
     </PhasesContext.Provider>
+      </Switch>
+    </Router>
   );
 }
