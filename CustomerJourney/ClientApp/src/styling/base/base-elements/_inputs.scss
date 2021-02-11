@@ -1,7 +1,8 @@
 input {
     border-radius: 0.5rem 0.5rem;
-    background-color: $input-background;
-    color: $input-text;
+    background-color: $project-background;
+    border-color: $project-border;
+    color: $project-text;
     padding: 0.75rem 1rem 0.75rem 1rem;
     font-weight: 400;
     height: max-content;

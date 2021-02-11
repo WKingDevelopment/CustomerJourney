@@ -1,8 +1,8 @@
 ﻿button {
-    background-color:$project-colour;
-    border: 0.15rem solid $project-colour;
+    background-color: $project-background;
+    border: 0.15rem solid $project-border;
     border-radius: 0.5rem 0.5rem;
-    color: $freestanding-text;
+    color: $project-text;
     overflow: hidden;
     padding: 0.25rem 1rem 0.25rem 1rem;
     margin: 0.25rem;
@@ -12,15 +12,14 @@
 button:focus { outline: none; }
 
 button:disabled {
-    background-color: rgb(89, 30, 119);
-    border: 0.15rem solid rgb(89, 30, 119);
+    background-color: $project-dropdown-background;
+    border: 0.15rem solid $project-border;
 }
 
 .button-X {
-    background-color:$project-colour;
-    border: 0.25rem solid $project-colour;
+    border: 0.25rem solid $project-border;
     border-radius: 0.5rem 0.5rem;
-    color: $freestanding-text;
+    color: $project-text;
     padding: .1rem .5rem .1rem .5rem;   
     font-size: small;
 }

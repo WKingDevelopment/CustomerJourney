@@ -18,6 +18,16 @@ class Field {
         }
         return error 
     }
+
+    public containsFieldLabel = (list:string[]):boolean => {
+        let result = false;
+        for (let i=0;i<list.length;i++) {
+            if(list[i] === this.label) {
+                return true;
+            };
+        };
+        return result;
+    }
     //#endregion
 
     //#region Private Methods

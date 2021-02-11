@@ -39,7 +39,6 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
             <div className="cont-horiz baseline centre ">
                 <button className="button-large" onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size, summary))}}>Add</button>
             </div>
-            
         </div>
     )
 }

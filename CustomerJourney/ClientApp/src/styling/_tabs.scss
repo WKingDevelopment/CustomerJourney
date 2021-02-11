@@ -2,7 +2,7 @@
     -webkit-tap-highlight-color: transparent;
   
     &__tab-list {
-      border-bottom: 1px solid #aaa;
+      border-bottom: 1px solid $project-border;
       margin: 0 0 10px;
       padding: 0;
     }
@@ -17,15 +17,15 @@
       list-style: none;
       padding: 6px 12px;
       cursor: pointer;
-      background: $project-colour;
-      color: white;
+      background: $project-dropdown-background;
+      color: $project-text;
       border-radius: 5px 5px 0 0;
       font-size: large;
 
       &--selected {
-        background: $project-colour;
-        border-color:white;
-        color: white;
+        background: $project-background;
+        border-color: $project-border;
+        color: $project-text;
         border-radius: 5px 5px 0 0;
       }
   
@@ -56,12 +56,13 @@
   
       &--selected {
         display: block;
+        color: $project-text;
       }
     }
   }
   
 
 .tab {
-    color: $freestanding-text;
-    background-color: $project-colour;
+    color: $project-text;
+    background-color: $project-background;
 }

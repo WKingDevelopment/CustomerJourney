@@ -19,13 +19,15 @@ const SortableFieldsList = React.memo(
           </tr>
           </thead>
           <tbody>
-          {props.list.map((field) => {
+          {props.list.map((field:Field) => {
             key += 1;
+            const disabled = field && props.disabledLabels && field.containsFieldLabel(props.disabledLabels);
             return (
               <SortableItem
                 key={key}
                 index={key}
                 id={key}
+                disabled={disabled}
                 showSize={props.showSize}
                 onRemove={props.onRemove}
                 field={field}
@@ -47,26 +49,28 @@ const SortableItem = SortableElement((props: ISortableItemProps) => {
         <td className="noselect">{props.field.mandatoryPhase}</td>
         <td> {props.field.summary ? <div className="noselect button-Y">Yes</div> : <div className="noselect button-N">No</div>}</td>
         <td className="noselect">
-          <button
+          {!props.disabled && <button
             className="button-X"
             onClick={() => {
               props.onRemove(props.id);
             }}
           >
             X
-          </button>
+          </button>}
         </td>
     </tr>
   );
 });
 
 interface ISortableListProps {
+  disabledLabels?: string[];
   list: Field[];
   showSize: boolean;
   onRemove: (index: number) => void;
 }
 
 interface ISortableItemProps {
+  disabled:boolean|undefined;
   field: Field;
   id: number;
   showSize: boolean;

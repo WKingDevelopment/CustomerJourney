@@ -35,6 +35,7 @@ const FieldsConfigurationForm = (props: IFieldsConfigurationFormProps) => {
             onSortEnd={onSortEnd}
             list={props.fields}
             onRemove={onRemove}
+            disabledLabels={['Description']}
           />
         </div>
       </div>

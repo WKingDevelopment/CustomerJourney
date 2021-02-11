@@ -46,8 +46,9 @@
 }
 
 .cont-border {
-    border: 0.15rem solid white;
-    border-radius: 0.5rem 0.5rem;
+    background-color: white;
+    border: 0.15rem solid $project-border;
+    border-radius: 1rem 1rem;
     margin: 0.25rem 0 0 0.5rem;
     padding: 1rem;
 }
