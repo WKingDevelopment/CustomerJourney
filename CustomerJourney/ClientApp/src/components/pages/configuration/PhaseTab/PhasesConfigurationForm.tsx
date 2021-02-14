@@ -78,7 +78,7 @@ const PhasesConfigurationForm = () => {
       <div className="cont-horiz vert-center mrgn-btm sb width-40">
         <h4>Project Configuration / Phase Configuration</h4>
         {
-          <button disabled={buttonDisabled} onClick={onSave}>
+          <button className="button" disabled={buttonDisabled} onClick={onSave}>
             Save
           </button>
         }
@@ -93,7 +93,7 @@ const PhasesConfigurationForm = () => {
             value={newPhaseLabel}
             onChange={(e) => setNewPhaseLabel(e.target.value)}
           />
-          <button onClick={addNewPhase}>Add Phase</button>
+          <button className="button" onClick={addNewPhase}>Add Phase</button>
         </div>
         <p>Drag and drop the phases below to suit your project's life-cycle</p>
         {phases && (

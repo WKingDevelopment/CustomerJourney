@@ -1,6 +1,6 @@
-﻿button {
+﻿.button {
     background-color: $project-background;
-    border: 0.15rem solid $project-border;
+    border: 0.1rem solid $project-border;
     border-radius: 0.5rem 0.5rem;
     color: $project-text;
     overflow: hidden;
@@ -9,11 +9,10 @@
     height:fit-content;
 }
 
-button:focus { outline: none; }
+.button:focus { outline: none; }
 
-button:disabled {
+.button:disabled {
     background-color: $project-background-disabled;
-    border: 0.15rem solid $project-border;
 }
 
 .button-X {
