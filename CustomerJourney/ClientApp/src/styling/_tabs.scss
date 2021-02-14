@@ -9,24 +9,24 @@
   
     &__tab {
       margin-left: 0.15rem;
-      display: inline-block;
-      border: 2px solid transparent;
+      background: white;
+      border: 2px solid ;
       border-bottom: none;
-      bottom: -1px;
-      position: relative;
-      list-style: none;
-      padding: 6px 12px;
-      cursor: pointer;
-      background: $project-dropdown-background;
-      color: $project-text;
+      border-color: $project-border;
       border-radius: 5px 5px 0 0;
+      bottom: -1px;
+      color: blue;
+      cursor: pointer;
       font-size: large;
+      list-style: none;
+      display: inline-block;
+      padding: 6px 12px;
+      position: relative;
 
       &--selected {
         background: $project-background;
-        border-color: $project-border;
-        color: $project-text;
-        border-radius: 5px 5px 0 0;
+        border: none;
+        color: blue;
       }
   
       &--disabled {
@@ -56,13 +56,17 @@
   
       &--selected {
         display: block;
-        color: $project-text;
+        color: blue;
       }
     }
   }
   
 
 .tab {
-    color: $project-text;
-    background-color: $project-background;
+  background: white;
+  border: 2px solid ;
+  border-bottom: none;
+  border-color: $project-border;
+  border-radius: 5px 5px 0 0;
+  color:blue;
 }

@@ -68,7 +68,7 @@ const ItemConfigurationForm = () => {
     return (
         <div>
             <div className="cont-horiz vert-center">
-                <div className="cont-horiz vert-center mrgn-btm sb width-35">
+                <div className="cont-horiz vert-center mrgn-btm sb width-40">
                     <h4>Project Configuration / Item Configuration</h4>
                     <button disabled={saveDisabled} onClick={onSave}>
                         Save

@@ -47,8 +47,7 @@
 
 .cont-border {
     background-color: white;
-    border: 0.15rem solid $project-border;
-    border-radius: 1rem 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 0.25rem 0 0 0.5rem;
     padding: 1rem;
 }

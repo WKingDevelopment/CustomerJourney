@@ -4,7 +4,7 @@
     border-radius: 0.5rem 0.5rem;
     color: $project-text;
     overflow: hidden;
-    padding: 0.25rem 1rem 0.25rem 1rem;
+    padding: 0.4rem 1.25rem 0.4rem 1.25rem;
     margin: 0.25rem;
     height:fit-content;
 }
@@ -12,7 +12,7 @@
 button:focus { outline: none; }
 
 button:disabled {
-    background-color: $project-dropdown-background;
+    background-color: $project-background-disabled;
     border: 0.15rem solid $project-border;
 }
 
