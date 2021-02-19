@@ -37,7 +37,7 @@ const AddNewFieldForm = (props:AddNewFieldProps) => {
                 <button className={summary ? 'button-Y grabbing noselect' : 'button-N grabbing noselect'}onClick={() => {setSummary(!summary)}}>{summary ? 'Yes':'No'}</button>
             </div>
             <div className="cont-horiz baseline centre ">
-                <button className="button-large" onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size, summary))}}>Add</button>
+                <button className="button" onClick={() => {onAddField(new Field(label,mandatoryPhase,type,size, summary))}}>Add</button>
             </div>
         </div>
     )

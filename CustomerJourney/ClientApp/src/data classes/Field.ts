@@ -2,6 +2,7 @@ import { isEmptyOrSpace } from "../general_Functions/validations_Functions";
 
 export { Field, fieldArrayRemoveByIndex }
 class Field {
+    //Object { id: 1, seq: 0, mandatoryPhase: "Complete", label: "House Number", type: "Number", size: "Small", summary: true, companyId: 0 }
     constructor (public label: string, public mandatoryPhase: string, public type:string, public size:string, public summary: boolean) { }
 
     //#region Public Methods

@@ -5,23 +5,27 @@
 
 .dropdown-placeholder {
     border: 0.1rem solid $project-border;
-    background-color: $project-background;
+    background-color: $project-dd-background;
     padding: 0.5rem 0.75rem 0.5rem 0.75rem;
     text-align: center;
 }
 
 .dropdown-menus {
     border: 0.1rem solid $project-border;
-    background-color: $project-background;
+    background-color: $project-dd-background;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    padding: 0.5rem 0 0.5rem 0;
+    padding: 0.25rem 0 0.25rem 0;
     position: absolute;
     text-align: center;
     width: 9rem;
 }
 
-.dropdown-controls {
+.dropdown-menus {
     padding-bottom: 1rem;
+}
+
+.dropdown-control {
+    border: 0.1rem solid $project-border;
 }

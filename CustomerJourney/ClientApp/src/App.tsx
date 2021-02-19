@@ -30,6 +30,7 @@ export const App = () => {
           const fields:Fields = await apiGetFields(session.session)
           const phases:Phases = await apiGetPhases(session.session);
           if (phases !== undefined && fields !== undefined) {
+            console.log(fields)
             phasesDispatch({type:reducerConstants.setPhases,phases:phases});
             fieldsDispatch({type:reducerConstants.setFields,fields:fields})
           }

@@ -21,6 +21,7 @@ const SortableFieldsList = React.memo(
           <tbody>
           {props.list.map((field:Field) => {
             key += 1;
+            console.log(field instanceof Field)
             const disabled = field && props.disabledLabels && field.containsFieldLabel(props.disabledLabels);
             return (
               <SortableItem
